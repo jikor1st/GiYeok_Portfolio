@@ -60,7 +60,7 @@ svg{
 
 /*main - 컨셉 설명*/
 #mainPage{
-    display:none;
+    /* display:none; */
 }
 #mainPage > article.introCon{
     position: absolute;top:18%;left:13%;z-index:500;
