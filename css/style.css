@@ -63,7 +63,7 @@ svg{
     /* display:none; */
 }
 #mainPage > article.introCon{
-    position: absolute;top:18%;left:13%;z-index:500;
+    position: absolute;top:8.59vw;left:13%;z-index:500;
 }
 #mainPage > article.introCon > div.introMain{
     font-family: 'Noto Serif KR', serif;
@@ -137,15 +137,15 @@ article.ctStBtnCon > div.jgySvgCon {
     display:flex;flex-direction: column;justify-content: space-between;height:100vh;
 }
 div.jgySvgCon > svg.jgy_svg:first-child{
-    position: fixed;top:-3%;left:50%;transform:translateX(-50%);
+    position: fixed;top:-3%;left:50%;transform:translateX(-50%);height:26.680vh;
     /* transform:translateY(-13%); */
 }
 div.jgySvgCon > svg.jgy_svg:nth-child(2){
-    position: fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+    position: fixed;top:50%;left:50%;transform:translate(-50%,-50%);height:26.680vh;
     /* transform:translateY(13%); */
 }
 div.jgySvgCon > svg.jgy_svg:last-child{
-    position: fixed;bottom:-3%;left:50%;transform:translateX(-50%);
+    position: fixed;bottom:-3%;left:50%;transform:translateX(-50%);height:26.680vh;
     /* transform:translateY(13%); */
 }
 div.jgySvgCon > svg.jgy_svg > g{
@@ -184,8 +184,8 @@ article.ctStBtnCon > div.stBtn > a.plus > div:last-child{
 }
 /* Main ㄱ 영역 */
 div.mainSvgCon {
-    display:flex;position:fixed;width:fit-content;height:100vh;top:0;right:12.13%;
-    align-items: flex-end;
+    display:flex;position:fixed;;height:100vh;width:100%;top:0;right:12.13%;
+    align-items: flex-end;width:max-content;
 }
 /* 글자 두께 컨트롤 영역 */
 div.mainSvgCon  div.dScon{
@@ -234,6 +234,12 @@ div.mainSvgCon > div > svg.lineV > g{
 section#contactPage{
     display:none;
 }
+div.intro_ctCon > h2.intro_ct{
+    font-size:1.375em;line-height:2.875em;
+}
+div.intro_ctCon > h2.intro_ct > span{
+
+}
 
 /*GiYeok repons media query 1440px*/
 @media screen and (max-width:1440px){
@@ -253,6 +259,9 @@ section#contactPage{
     header{
         padding:56px 56px;
     }
+    #mainPage > article.introCon{
+    position: absolute;top:20vw;left:13%;z-index:500;
+}
     article.ctStBtnCon > div.stBtn{
         left:75%;top:26%;transform:translateX(-50%);
     }
@@ -280,10 +289,16 @@ section#contactPage{
         display:flex;flex-direction: row;text-align:right;
         height:fit-content;justify-content: space-between;width:40vw;
     }
+        div.mainSvgCon  div.dScon{
+        position: absolute;top:-3.5%;left:67%;text-align:center;
+    }
 }
 /*mobile media query*/
 @media screen and (max-width:510px){
-    *{font-size:14px;}
+    *{font-size:12px;}
+    #allWrap{
+        max-height:663px;
+    }
     nav{
         display:flex;flex-direction:row-reverse;
         justify-content:flex-start;
@@ -302,6 +317,10 @@ section#contactPage{
     }
     div.mainSvgCon {
         transform-origin:bottom right;
-        transform:scale(0.67) translateX(50px);
+        /* transform:scale(0.67) translateX(50px); */
+        /* height:24vh; */
+    }
+    div.mainSvgCon > div.gCon{
+        /* height:24vh; */
     }
 }
