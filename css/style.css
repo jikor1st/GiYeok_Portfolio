@@ -101,6 +101,7 @@ div.introSub > dl.inS01{
 }
 div.introSub > dl.inS01 > dd{
     font-size:1em;line-height:2em;font-weight:300;
+    background-color:white;width:fit-content;
 }
 div.introSub > dl.inS01 > div{
     display:flex;width:fit-content;align-items: center;
@@ -110,6 +111,7 @@ div.introSub > dl.inS01 > div > dt{
     font-size:1.750em;font-weight:900;
     color:#D6DBF1;
     margin-top:19px;
+    width:fit-content;
 }
 div.introSub > dl.inS01 > div > hr{
     width:12.39vw;border:none;border-top:1px solid #D6DBF1;vertical-align: center;
@@ -128,10 +130,12 @@ div.introSub > dl.inS02 > div > dt{
     font-family: 'Noto Serif KR', serif;
     font-size:1.750em;font-weight:900;
     color:#D6DBF1;margin-top:30px;
+    width:fit-content;
 }
 div.introSub > dl.inS02 > dd{
     font-size:1em;line-height:2.625em;font-weight:400;
     margin-top:19px;
+    background-color:white;width:fit-content;
 }
 div.introSub > dl.inS02 > dd > span{
     font-weight:700;
@@ -273,7 +277,7 @@ div.contact_con > h2{
 
 div.contact_info_con > h3.Ct_name {
     font-size:1.438em;color:#0F78F4;font-weight:700;
-    margin-bottom:40px;
+    margin-bottom:40px;background-color:white;width:fit-content;
 }div.info_con > dl.inform{
     display:flex;font-size:1.250em;
     margin-bottom:23px;
@@ -281,9 +285,10 @@ div.contact_info_con > h3.Ct_name {
 div.info_con > dl.inform > dt{
     font-family: 'Noto Serif KR', serif;
     font-weight:500;margin-right:60px;
+    background-color:white;
 }
 div.info_con > dl.inform > dd{
-    font-weight:300;
+    font-weight:300;background-color:white;
 }
 .contact_info_con > .info_con {
     margin-bottom:45px;
@@ -291,10 +296,13 @@ div.info_con > dl.inform > dd{
 .link_contact_con{
     display:flex;width:75%;justify-content: space-between;
 }
+.link_contact_con > a {
+    background-color:white;border-radius:600px;display: inline-block;width:fit-content;height:fit-content;
+}
 
 @media screen and (max-width:1600px) {
     div.mainSvgCon  div.dScon{
-        position: absolute;top:-3.5%;right:-100%;text-align:center;
+        position: absolute;top:-3.5%;right:-100vw;text-align:center;
     }
 }
 
@@ -377,7 +385,6 @@ div.info_con > dl.inform > dd{
         /* transform:scale(0.67) translateX(50px); */
         /* height:24vh; */
     }
-
     div.mainSvgCon > div.gCon{
         /* height:24vh; */
     }
