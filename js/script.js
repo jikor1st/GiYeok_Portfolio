@@ -111,7 +111,7 @@ function onClickPlus(e){
         plusBtn.style.transform = "scale(0)";
     }
     sP -= 15;
-    // fontWeightP.style.animation = ""
+    
     mainControllGStroke();
 }
 
