@@ -210,6 +210,23 @@ div.mainSvgCon  div.dScon > p.fontWeight{
     font-size:1.313em;font-weight:bold;
     padding:14px 0;
 }
+@keyframes fontLeft {
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-7px);
+    }
+}
+@keyframes fontRight {
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(7px);
+    }
+}
+
 div.dScon > svg.lineDs > g.g_lineDs{
     stroke-linecap:square; stroke-miterlimit:10;
     stroke-width:1;
@@ -302,7 +319,7 @@ div.info_con > dl.inform > dd{
 
 @media screen and (max-width:1600px) {
     div.mainSvgCon  div.dScon{
-        position: absolute;top:-3.5%;right:-100vw;text-align:center;
+        position: absolute;top:-3.5%;right:-107%;text-align:center;
     }
 }
 
