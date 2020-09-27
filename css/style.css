@@ -318,9 +318,9 @@ div.info_con > dl.inform > dd{
         /* transform-origin:bottom right; */
         /* transform:scale(0.7); */
     }
-    div.mainSvgCon > div > svg.giyeok_svg > g.mainG{
+    /* div.mainSvgCon > div > svg.giyeok_svg > g.mainG{
         stroke:#95c7ff;
-    }
+    } */
 }
 @media screen and (max-width:1050px){
     div.introSub > dl.inS02 {
