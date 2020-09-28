@@ -29,7 +29,7 @@ window.onload  = function() {
 reset();
 
 function reset(){
-    minusBtn.style.transform = "scale(0)";
+    minusBtn.style.backgroundColor = "#D9DDE3";
     let hamD = 0;
     for(var i = 0;i < navHamEls.length;i++){
         navHamEls[i].style.transition = "all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6) " + hamD + "s";
@@ -80,39 +80,64 @@ let mainS = 170;
 let sL = 30;
 let sP = 0;
 var tranBtn = true;
+var limitBM = true;
+var limitBP = true;
+var fontEasing = "cubic-bezier(.53,-1.12,.47,1.95)";
+var btnEasing = "cubic-bezier(.53,-1.12,.47,1.95)";
 function onClickMinus(e){
     e.preventDefault();
     if(!tranBtn){
         return;
     }
-    if(mainS > 170){
+    if(mainS > 170 && limitBM){
         mainS -= sL;
         // plusBtn.style.visibility = "visible";
-        plusBtn.style.transform = "scale(1)";
+        // plusBtn.style.transform = "scale(1)";
+        plusBtn.style.backgroundColor = "#0F78F4";
+        minusBtn.style.animation = "btnScale 0.8s " + btnEasing + " 1 alternate";
+        fontWeightP.style.animation = "fontLeft 0.8s " + fontEasing + " 1 alternate"
+        setTimeout(function(){
+            minusBtn.style.animation = "";
+            fontWeightP.style.animation = "";
+        },800);
+        sP += 15;
+        mainControllGStroke();
+        limitBP = true;
     }
     if(mainS <= 170){
         // minusBtn.style.visibility = "hidden";
-        minusBtn.style.transform = "scale(0)";
+        // minusBtn.style.transform = "scale(0)";
+        minusBtn.style.backgroundColor = "#D9DDE3";
+        limitBM = false;
     }
-    sP += 15;
-    mainControllGStroke();
+    
 }
 function onClickPlus(e){
     e.preventDefault();
     if(!tranBtn){
         return;
     }
-    if(mainS < 290){
+    if(mainS < 290 && limitBP){
         mainS += sL;
         // minusBtn.style.visibility = "visible";
-        minusBtn.style.transform = "scale(1)";
+        // minusBtn.style.transform = "scale(1)";
+        minusBtn.style.backgroundColor = "#0F78F4";
+        plusBtn.style.animation = "btnScale 0.8s " + btnEasing + " 1 alternate";
+        fontWeightP.style.animation = "fontRight 0.8s " + fontEasing + " 1 alternate"
+        setTimeout(function(){
+            plusBtn.style.animation = "";
+            fontWeightP.style.animation = "";
+        },800);
+        sP -= 15;
+        mainControllGStroke();
+        limitBM = true;
     }
     if(mainS >= 290){
-        plusBtn.style.transform = "scale(0)";
+        // plusBtn.style.transform = "scale(0)";
+        plusBtn.style.backgroundColor = "#D9DDE3";
+        limitBP = false;
     }
-    sP -= 15;
     
-    mainControllGStroke();
 }
 
 
@@ -121,9 +146,11 @@ function mainControllGStroke(){
     setTimeout(function(){
         tranBtn = true;
     },800);
+    setTimeout(function(){
+        fontWeightP.innerText = mainS + " 두께";
+    },600);
     mainG.style.strokeWidth = mainS;
     mainG.style.transition = 'stroke-width 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
-    fontWeightP.innerText = mainS + " 두께";
     for(var i = 0; i < lineV.length;i++){
         lineV[i].style.transition = 'all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
         lineDs[i].style.transition = 'all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6)';

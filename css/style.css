@@ -135,7 +135,7 @@ div.introSub > dl.inS02 > div > dt{
 div.introSub > dl.inS02 > dd{
     font-size:1em;line-height:2.625em;font-weight:400;
     margin-top:19px;
-    background-color:white;width:fit-content;
+    width:fit-content;
 }
 div.introSub > dl.inS02 > dd > span{
     font-weight:700;
@@ -213,20 +213,50 @@ div.mainSvgCon  div.dScon > p.fontWeight{
 @keyframes fontLeft {
     0%{
         transform:translateX(0);
+        opacity:1;
+    }
+    33%{
+        transform:translateX(-30px)  rotateZ(-25deg);
+        opacity:0;
+    }
+    66%{
+        transform:translateX(30px)  rotateZ(25deg);
+        opacity:0;
     }
     100%{
-        transform:translateX(-7px);
+        transform:translateX(0);
+        opacity:1;
     }
 }
 @keyframes fontRight {
     0%{
         transform:translateX(0);
+        opacity:1;
+    }
+    33%{
+        transform:translateX(30px) rotateZ(-25deg);
+        opacity:0;
+    }
+    66%{
+        transform:translateX(-30px) rotateZ(25deg);
+        opacity:0;
     }
     100%{
-        transform:translateX(7px);
+        transform:translateX(0);
+        opacity:1;
     }
 }
-
+@keyframes btnScale {
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.2);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
 div.dScon > svg.lineDs > g.g_lineDs{
     stroke-linecap:square; stroke-miterlimit:10;
     stroke-width:1;
@@ -302,10 +332,9 @@ div.contact_info_con > h3.Ct_name {
 div.info_con > dl.inform > dt{
     font-family: 'Noto Serif KR', serif;
     font-weight:500;margin-right:60px;
-    background-color:white;
 }
 div.info_con > dl.inform > dd{
-    font-weight:300;background-color:white;
+    font-weight:300;
 }
 .contact_info_con > .info_con {
     margin-bottom:45px;
@@ -320,6 +349,9 @@ div.info_con > dl.inform > dd{
 @media screen and (max-width:1600px) {
     div.mainSvgCon  div.dScon{
         position: absolute;top:-3.5%;right:-107%;text-align:center;
+    }
+    .fontWeight{
+        color:white;
     }
 }
 
@@ -346,6 +378,7 @@ div.info_con > dl.inform > dd{
     /* div.mainSvgCon > div > svg.giyeok_svg > g.mainG{
         stroke:#95c7ff;
     } */
+    
 }
 @media screen and (max-width:1050px){
     div.introSub > dl.inS02 {
@@ -393,6 +426,12 @@ div.info_con > dl.inform > dd{
     div.introSub > dl.inS02 > dd{
         font-size:1.2em;
     }
+    div.introSub > dl.inS01 > div > dt{
+        color:black;
+    }
+    div.introSub > dl.inS02 > div > dt{
+        color:black;
+    }
     /*두께조절 버튼 위치조정*/
     article.ctStBtnCon > div.stBtn{
         left:50%;top: unset;bottom:45px;
@@ -422,5 +461,16 @@ div.info_con > dl.inform > dd{
     }
     .link_contact_con img{
         width:40px;height:40px;
+    }
+    div.mainSvgCon > div > svg.giyeok_svg > g.mainG{
+        stroke:#0f7af434; 
+    }
+    div.dScon > svg.lineDs > g.g_lineDs{
+        stroke-linecap:square; stroke-miterlimit:10;
+        stroke-width:1;
+        stroke:black;stroke-dasharray:3,3;
+    }
+    .fontWeight{
+        color:black;
     }
 }
