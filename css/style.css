@@ -71,7 +71,10 @@ svg{
     height:100vh;width:100%;
 }
 #mainPage > article.introCon{
-    position: absolute;top:8.59vw;left:13%;z-index:500;
+    position: absolute;left:13%;z-index:500;
+    top:25.93vw;
+    /* top:8.59vw; */
+    /* transform:translateY(-17.34vw); */
 }
 #mainPage > article.introCon > div.introMain{
     font-family: 'Noto Serif KR', serif;
@@ -97,7 +100,39 @@ div.introMain > hr{
     margin-top:48px;margin-left:18px;
 }
 div.introSub > dl.inS01{
-
+    visibility: hidden;
+    opacity:0;
+}
+@keyframes displayT {
+    0%{
+        visibility: hidden;
+        opacity:0;
+        transform:translateY(100px);
+    }
+    50%{
+        opacity:1;
+    }
+    100%{
+        visibility: visible;
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+@keyframes displayC {
+    0%{ 
+        visibility: visible;
+        transform:translateY(0);
+        opacity:1;
+    }
+    50%{
+        opacity:1;
+    }
+    100%{
+        visibility: hidden;
+        opacity:0;
+        transform:translateY(100px);
+        
+    }
 }
 div.introSub > dl.inS01 > dd{
     font-size:1em;line-height:2em;font-weight:300;
@@ -116,6 +151,10 @@ div.introSub > dl.inS01 > div > dt{
 div.introSub > dl.inS01 > div > hr{
     width:12.39vw;border:none;border-top:1px solid #D6DBF1;vertical-align: center;
     margin-top:1.750em;margin-left:5.10vw;
+}
+div.introSub > dl.inS02{
+    visibility: hidden;
+    opacity:0;
 }
 div.introSub > dl.inS02 > div {
     position:relative;width:fit-content;
@@ -366,7 +405,9 @@ div.info_con > dl.inform > dd{
     padding:0 56px;
     }
     #mainPage > article.introCon{
-    position: absolute;top:20vw;left:13%;z-index:500;
+    position: absolute;left:13%;z-index:500;
+    /* top:20vw; */
+    top:37.34vw;
     }
     article.ctStBtnCon > div.stBtn{
         left:75%;top:26%;transform:translateX(-50%);
@@ -382,7 +423,7 @@ div.info_con > dl.inform > dd{
 }
 @media screen and (max-width:1050px){
     div.introSub > dl.inS02 {
-        display:none;
+        /* visibility: "hidden"; */
     }
     nav{
         display:flex;flex-direction:row-reverse;
@@ -395,6 +436,7 @@ div.info_con > dl.inform > dd{
         display:flex;flex-direction: row;text-align:right;
         height:fit-content;justify-content: space-between;width:42vw;
     }
+    .myNameIs > span{background:white;}
 }
 /*mobile media query*/
 @media screen and (max-width:700px){
@@ -417,8 +459,10 @@ div.info_con > dl.inform > dd{
     nav > ul.navHam > li{
         font-size:1.4em;
     }
+    .myNameIs > span{background:unset;}
     #mainPage > article.introCon {
-        top:56px;
+        /* top:56px; */
+        top:330px;
     }
     div.introSub > dl.inS01 > dd{
         font-size:1.2em;
@@ -472,5 +516,8 @@ div.info_con > dl.inform > dd{
     }
     .fontWeight{
         color:black;
+    }
+    div.introSub > dl.inS02 > div > div.dot {
+        background-color:black;
     }
 }

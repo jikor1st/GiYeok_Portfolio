@@ -11,13 +11,17 @@ lineV = Array.prototype.slice.call(lineV);
 var lineDs = document.querySelectorAll('div.dScon > svg.lineDs');
 lineDs = Array.prototype.slice.call(lineDs);
 
-
 var hamToggle = true;
 
 const minusBtn = document.querySelector('.stBtn > .minus');
 const plusBtn = document.querySelector('.stBtn > .plus');
 const mainG = document.querySelector('.giyeok_svg > .mainG');
 const fontWeightP = document.querySelector('p.fontWeight');
+
+const mTBox = document.querySelector('#mainPage > .introCon');
+const mT01 = document.querySelector('.introCon > .introMain');
+const mT02 = document.querySelector('.introSub > .inS01');
+const mT03 = document.querySelector('.introSub > .inS02');
 
 window.onload  = function() {
     // for(var i = 0;i < navHamEls.length; i++){
@@ -84,6 +88,9 @@ var limitBM = true;
 var limitBP = true;
 var fontEasing = "cubic-bezier(.53,-1.12,.47,1.95)";
 var btnEasing = "cubic-bezier(.53,-1.12,.47,1.95)";
+
+var indexMain = 0;
+
 function onClickMinus(e){
     e.preventDefault();
     if(!tranBtn){
@@ -100,6 +107,8 @@ function onClickMinus(e){
             minusBtn.style.animation = "";
             fontWeightP.style.animation = "";
         },800);
+        indexMain -= 1;
+        ControllScroll();
         sP += 15;
         mainControllGStroke();
         limitBP = true;
@@ -123,11 +132,13 @@ function onClickPlus(e){
         // minusBtn.style.transform = "scale(1)";
         minusBtn.style.backgroundColor = "#0F78F4";
         plusBtn.style.animation = "btnScale 0.8s " + btnEasing + " 1 alternate";
-        fontWeightP.style.animation = "fontRight 0.8s " + fontEasing + " 1 alternate"
+        fontWeightP.style.animation = "fontRight 0.8s " + fontEasing + " 1 alternate";
         setTimeout(function(){
             plusBtn.style.animation = "";
             fontWeightP.style.animation = "";
         },800);
+        indexMain += 1;
+        ControllScroll();
         sP -= 15;
         mainControllGStroke();
         limitBM = true;
@@ -139,7 +150,57 @@ function onClickPlus(e){
     }
     
 }
+var mw01 = window.matchMedia("(max-width:1920px) and (min-width:1201px)");
+var mw02 = window.matchMedia("(max-width:1200px) and (min-width:701px)");
+var mw03 = window.matchMedia("(max-width:700px)");
+window.onresize = function(){
+    ControllScroll();
+    mTBox.style.transition = "";
+};
+var CBM = false;
+function ControllScroll(){
+    mTBox.style.transition = "all 0.8s cubic-bezier(.53,-1.12,.47,1.95)";
+    if(indexMain == 0){
+        if(mw01.matches){
+            mTBox.style.top = "25.93vw";
+        }
+        else if(mw02.matches){
+            mTBox.style.top = "37.34vw";
+        }
+        else if(mw03.matches){
+            mTBox.style.top = "330px";
+        }
+        mT02.style.animation = "displayC 0.8s " + fontEasing + " 0.1s 1 backwards";
+    }
+    else if(indexMain == 1){
+        if(mw01.matches){
+            mTBox.style.top = "8.95vw";
+            console.log('m01');
+        }
+        else if(mw02.matches){
+            mTBox.style.top = "20vw";
+            console.log('m02');
+        }
+        else if(mw03.matches){
+            mTBox.style.top = "56px";
+            console.log('m03');
+        }
+        mT02.style.animation = "displayT 0.8s " + fontEasing + " 0.1s 1 forwards";
+        if(CBM){
+            mT03.style.animation = "displayC 0.8s " + fontEasing + " 0.1s 1 backwards";
+        }
+    }
+    else if(indexMain == 2){
+        CBM = true;
+        mT03.style.animation = "displayT 0.8s " + fontEasing + " 0.1s 1 forwards" ;
+    }
+    else if(indexMain == 3){
 
+    }
+    else if(indexMain == 4){
+
+    }
+}
 
 function mainControllGStroke(){
     tranBtn = false;
