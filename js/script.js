@@ -22,6 +22,14 @@ const mTBox = document.querySelector('#mainPage > .introCon');
 const mT01 = document.querySelector('.introCon > .introMain');
 const mT02 = document.querySelector('.introSub > .inS01');
 const mT03 = document.querySelector('.introSub > .inS02');
+const mT04 = document.querySelector('.contact_con');
+
+var sectionEls = document.querySelectorAll('main > section');
+const section01 = document.querySelector('main > #mainPage');
+const section02 = document.querySelector('main > #contactPage');
+
+var jgySEls = document.querySelectorAll('.jgySvgCon > svg.jgy_svg');
+var jgyGEls = document.querySelectorAll('.jgySvgCon > svg.jgy_svg > g.g_gg');
 
 window.onload  = function() {
     // for(var i = 0;i < navHamEls.length; i++){
@@ -33,6 +41,8 @@ window.onload  = function() {
 reset();
 
 function reset(){
+    section01.style.top = "0";
+    section02.style.top = "100vh";
     minusBtn.style.backgroundColor = "#D9DDE3";
     let hamD = 0;
     for(var i = 0;i < navHamEls.length;i++){
@@ -90,6 +100,7 @@ var fontEasing = "cubic-bezier(.53,-1.12,.47,1.95)";
 var btnEasing = "cubic-bezier(.53,-1.12,.47,1.95)";
 
 var indexMain = 0;
+var topFix = 100;
 
 function onClickMinus(e){
     e.preventDefault();
@@ -126,7 +137,7 @@ function onClickPlus(e){
     if(!tranBtn){
         return;
     }
-    if(mainS < 290 && limitBP){
+    if(mainS < 260 && limitBP){
         mainS += sL;
         // minusBtn.style.visibility = "visible";
         // minusBtn.style.transform = "scale(1)";
@@ -143,7 +154,7 @@ function onClickPlus(e){
         mainControllGStroke();
         limitBM = true;
     }
-    if(mainS >= 290){
+    if(mainS >= 260){
         // plusBtn.style.transform = "scale(0)";
         plusBtn.style.backgroundColor = "#D9DDE3";
         limitBP = false;
@@ -193,12 +204,17 @@ function ControllScroll(){
     else if(indexMain == 2){
         CBM = true;
         mT03.style.animation = "displayT 0.8s " + fontEasing + " 0.1s 1 forwards" ;
+        section01.style.top = "0";
+        section02.style.top = "100vh";
+        mT04.style.animation = "displayC 0.8s " + fontEasing + " 0.1s 1 backwards";
     }
     else if(indexMain == 3){
-
-    }
-    else if(indexMain == 4){
-
+        for(var i = 0; i < sectionEls.length;i++){
+            sectionEls[i].style.transition = "all 0.8s cubic-bezier(.53,-1.12,.47,1.95)";
+        }
+        section01.style.top = "-100vh";
+        section02.style.top = "0";
+        mT04.style.animation = "displayT 1s " + fontEasing + " 0.2s 1 forwards";
     }
 }
 
