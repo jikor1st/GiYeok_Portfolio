@@ -10,6 +10,12 @@ var lineV = document.querySelectorAll('div.mainSvgCon > div > svg.lineV');
 lineV = Array.prototype.slice.call(lineV);
 var lineDs = document.querySelectorAll('div.dScon > svg.lineDs');
 lineDs = Array.prototype.slice.call(lineDs);
+var lineH = document.querySelectorAll('div.mainSvgCon > div.line_svg');
+lineH = Array.prototype.slice.call(lineH);
+
+const naBtn01 = document.querySelector('.naBtn01');
+const naBtn02 = document.querySelector('.naBtn02');
+const naBtn03 = document.querySelector('.naBtn03');
 
 var hamToggle = true;
 
@@ -52,6 +58,7 @@ function reset(){
         navHamEls[i].style.opacity = "0";
         hamD += 0.2;
     }
+    mT04.style.opacity="0";
 }
 
 function onClickHamBtn(e){
@@ -159,8 +166,13 @@ function onClickPlus(e){
         plusBtn.style.backgroundColor = "#D9DDE3";
         limitBP = false;
     }
+}
+function onClickNaBtn02(e){
+    e.preventDefault();
     
 }
+naBtn02.addEventListener('click', onClickNaBtn02);
+
 var mw01 = window.matchMedia("(max-width:1920px) and (min-width:1201px)");
 var mw02 = window.matchMedia("(max-width:1200px) and (min-width:701px)");
 var mw03 = window.matchMedia("(max-width:700px)");
@@ -206,15 +218,18 @@ function ControllScroll(){
         mT03.style.animation = "displayT 0.8s " + fontEasing + " 0.1s 1 forwards" ;
         section01.style.top = "0";
         section02.style.top = "100vh";
-        mT04.style.animation = "displayC 0.8s " + fontEasing + " 0.1s 1 backwards";
+        mT04.style.opacity="0";
+        mT04.style.transition = "opacity 0.5s ease-in-out";
     }
     else if(indexMain == 3){
         for(var i = 0; i < sectionEls.length;i++){
             sectionEls[i].style.transition = "all 0.8s cubic-bezier(.53,-1.12,.47,1.95)";
         }
+        sectionEls[1].style.transition = "all 0.7s ease-in";
         section01.style.top = "-100vh";
         section02.style.top = "0";
-        mT04.style.animation = "displayT 1s " + fontEasing + " 0.2s 1 forwards";
+        mT04.style.opacity = "1";
+        mT04.style.transition = "opacity 3s ease-in-out";
     }
 }
 
@@ -226,16 +241,22 @@ function mainControllGStroke(){
     setTimeout(function(){
         fontWeightP.innerText = mainS + " 두께";
     },600);
+    
     mainG.style.strokeWidth = mainS;
     mainG.style.transition = 'stroke-width 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
+    
     for(var i = 0; i < lineV.length;i++){
         lineV[i].style.transition = 'all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
         lineDs[i].style.transition = 'all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
+        lineH[i].style.transition = 'all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6)';
     }
-    lineV[0].style.transform = "translateY(" + sP + "px)";
-    lineV[1].style.transform = "translateY(" + sP * -1 + "px)";
+    lineV[0].style.transform = "translateY(" + sP + "px) scaleY(1)";
+    lineV[1].style.transform = "translateY(" + sP * -1 + "px) scaleY(1)";
     lineDs[0].style.transform = "translateY(" + sP + "px)";
     lineDs[1].style.transform = "translateY(" + sP * -1 + "px)";
+
+    lineH[0].style.transform = "translateX(" + sP + "px) scaleY(1)";
+    lineH[1].style.transform = "translateX(" + sP * -1 + "px) scaleY(1)";
 }
 minusBtn.addEventListener('click', onClickMinus);
 plusBtn.addEventListener('click', onClickPlus);

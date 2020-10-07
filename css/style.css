@@ -61,7 +61,6 @@ nav > a.hamBtn > div.hamLine:last-child{
     transform-origin:bottom left;
     /* transform:translateY(2px) rotateZ(-45deg); */
 }
-
 svg{
     overflow:visible;
     vertical-align: top;
@@ -146,7 +145,7 @@ div.introSub > dl.inS01{
 }
 div.introSub > dl.inS01 > dd{
     font-size:1em;line-height:2em;font-weight:300;
-    background-color:white;width:fit-content;
+    width:fit-content;
 }
 div.introSub > dl.inS01 > div{
     display:flex;width:fit-content;align-items: center;
@@ -198,7 +197,7 @@ div.introSub > dl.inS02 > div > dt{
 div.introSub > dl.inS02 > dd{
     font-size:1em;line-height:2.625em;font-weight:400;
     margin-top:19px;
-    width:fit-content;background-color:white;
+    width:fit-content;
 }
 div.introSub > dl.inS02 > dd > span{
     font-weight:700;
@@ -227,7 +226,87 @@ div.jgySvgCon > svg.jgy_svg > g{
     fill:none; stroke:#F8F8FD; 
     stroke-width:60;
     stroke-linecap:square; stroke-miterlimit:10;
+    /* stroke-dashoffset:230; */
+    /* stroke-dasharray:230; */
+    /* animation:drawJGY 2s ease forwards; */
 }
+div.jgySvgCon > svg.jgy_svg > g.j_g{
+    stroke-dashoffset:450;
+    stroke-dasharray:300;
+    animation:drawJ 2.5s ease forwards;
+}
+@keyframes drawJ{
+    0%{
+        stroke-width:1;
+        visibility:hidden;
+        opacity:0;
+        stroke-dashoffset: 450;
+    }
+    30%{
+        opacity:1;
+    }
+    70%{
+        stroke-width:60;
+    }
+    100%{
+        stroke-width:60;
+        visibility:visible;
+        opacity:1;
+        stroke-dashoffset: 0;
+    }
+}
+div.jgySvgCon > svg.jgy_svg > g.g_g{
+    stroke-dashoffset:100;
+    stroke-dasharray:600;
+    animation:drawGG 2.5s ease forwards;
+}
+@keyframes drawGG{
+    0%{
+        stroke-width:1;
+        visibility:hidden;
+        opacity:0;
+        stroke-dashoffset: 600;
+    }
+    30%{
+        opacity:1;
+    }
+    70%{
+        stroke-width:60;
+    }
+    100%{
+        stroke-width:60;
+        visibility:visible;
+        opacity:1;
+        stroke-dashoffset: 0;
+    }
+}
+div.jgySvgCon > svg.jgy_svg > g.y_g{
+    stroke-dashoffset:670;
+    stroke-dasharray:670;
+    animation:drawY 2.5s ease forwards;
+}
+@keyframes drawY{
+    0%{
+        stroke-width:1;
+        visibility:hidden;
+        opacity:0;
+        stroke-dashoffset: 670;
+    }
+    30%{
+        opacity:1;
+    }
+    70%{
+        stroke-width:60;
+    }
+    100%{
+        stroke-width:60;
+        visibility:visible;
+        opacity:1;
+        stroke-dashoffset: 0;
+    }
+}
+
+
 article.ctStBtnCon > div.stBtn{
     display:flex;width:254px;justify-content: space-between;
     position: fixed;left:50%;top:26%;transform:translateX(-50%);
@@ -325,11 +404,32 @@ div.dScon > svg.lineDs > g.g_lineDs{
     stroke-width:1;
     stroke:#D6DBF1;stroke-dasharray:3,3;
 }
-div.mainSvgCon > svg.line_svg > g{
+div.mainSvgCon > div.line_svg{
+    font-size:0;
+    height:100vh;width:1px;
+    border:none;
+    animation:drawLineH 1s ease-in 1 alternate;
+    transform-origin:top left;
+}
+@keyframes drawLineH{
+    0%{
+        transform:translateX(0) scaleY(0);
+    }
+    100%{
+        transform:translateX(0) scaleY(1);
+    }
+}
+div.mainSvgCon > div.line_svg:first-child{
+    border-right:1px dashed #D6DBF1;
+}
+div.mainSvgCon > div.line_svg:last-child{
+    border-left:1px dashed #D6DBF1;
+}
+/* div.mainSvgCon > svg.line_svg > g{
     stroke-linecap:square; stroke-miterlimit:10;
     stroke-width:1;
     stroke:#D6DBF1;stroke-dasharray:3,3;
-}
+} */
 div.mainSvgCon > div.gCon{
     position:relative;top:0;left:0;width:100%;height:fit-content;
 }
@@ -338,22 +438,25 @@ div.mainSvgCon > div > svg.giyeok_svg {
 }
 div.mainSvgCon > div > svg.giyeok_svg > g.mainG{
     fill:none; stroke:#0F78F4; 
-    stroke-width:170;
     stroke-linecap:square; stroke-miterlimit:10;
     
+    stroke-width:170;
     stroke-dasharray:1200;
     stroke-dashoffset:1200;
-    animation:drawG 2s ease forwards;
+    animation:drawG 2s ease forwards alternate;
+    /* transition :all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6); */
 }
 @keyframes drawG{
     0%{
+        visibility:hidden;
         opacity:0;
         stroke-dashoffset: 1200;
     }
-    15%{
+    30%{
         opacity:1;
     }
-    to{
+    100%{
+        visibility:visible;
         opacity:1;
         stroke-dashoffset: 0;
     }
@@ -361,6 +464,7 @@ div.mainSvgCon > div > svg.giyeok_svg > g.mainG{
 div.mainSvgCon > div > svg.lineV {
     width:162.217%;
     position:absolute;top:0;left:-142px;
+    
 }
 div.mainSvgCon > div > svg.lineV:last-child {
     position:absolute;top:30.5%;left:-142px;
@@ -369,6 +473,17 @@ div.mainSvgCon > div > svg.lineV > g{
     fill:none;stroke:#3E3E5D;
     stroke-width:1;stroke-dasharray:3,3;
     stroke-linecap:square; stroke-miterlimit:10;
+    animation:drawLineV 1s ease-in forwards 1 alternate;
+    transform-origin: left top;
+}
+
+@keyframes drawLineV{
+    0%{
+        transform:translateY(0) scaleX(0);
+    }
+    100%{
+        transform:translateY(0) scaleX(1);
+    }
 }
 
 /*section contact*/
@@ -423,7 +538,7 @@ div.info_con > dl.inform > dd{
     display:flex;width:75%;justify-content: space-between;
 }
 .link_contact_con > a {
-    background-color:white;border-radius:600px;display: inline-block;width:fit-content;height:fit-content;
+    border-radius:600px;display: inline-block;width:fit-content;height:fit-content;
 }
 
 @media screen and (max-width:1600px) {
@@ -477,7 +592,6 @@ div.info_con > dl.inform > dd{
         display:flex;flex-direction: row;text-align:right;
         height:fit-content;justify-content: space-between;width:42vw;
     }
-    .myNameIs > span{background:white;}
 }
 /*mobile media query*/
 @media screen and (max-width:700px){
