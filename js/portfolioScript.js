@@ -157,6 +157,7 @@ function onPortBtn(e){
             port[index].style.transition = 'all 0.8s ease-in 1.6s';
             setTimeout(function(){
                 html.style.overflowY = "scroll";
+                html.style.overflowX = "hidden";
             },2400);
             
         }
@@ -185,6 +186,7 @@ function onClickEx(e){
         clearInterval(timeN);
     }
     html.style.overflowY = "hidden";
+    html.style.overflowX = "hidden";
 },130);
 }
 
