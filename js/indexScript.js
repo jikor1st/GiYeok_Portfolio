@@ -100,6 +100,8 @@ hamBtn.addEventListener("click", onClickHamBtn);
 let mainS = 170;
 let sL = 30;
 let sP = 0;
+let jgyP = 50;
+
 var tranBtn = true;
 var limitBM = true;
 var limitBP = true;
@@ -128,6 +130,7 @@ function onClickMinus(e){
         indexMain -= 1;
         ControllScroll();
         sP += 15;
+        jgyP += 10;
         mainControllGStroke();
         limitBP = true;
     }
@@ -158,6 +161,7 @@ function onClickPlus(e){
         indexMain += 1;
         ControllScroll();
         sP -= 15;
+        jgyP -= 10;
         mainControllGStroke();
         limitBM = true;
     }
@@ -257,6 +261,9 @@ function mainControllGStroke(){
 
     lineH[0].style.transform = "translateX(" + sP + "px) scaleY(1)";
     lineH[1].style.transform = "translateX(" + sP * -1 + "px) scaleY(1)";
+    
+    jgySEls[0].style.left = jgyP + "%";
+    jgySEls[2].style.right = jgyP + "%";
 }
 minusBtn.addEventListener('click', onClickMinus);
 plusBtn.addEventListener('click', onClickPlus);

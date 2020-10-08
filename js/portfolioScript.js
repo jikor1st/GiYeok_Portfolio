@@ -1,5 +1,7 @@
 console.log("javascript load");
 
+var html = document.querySelector('html');
+
 const hamBtn = document.querySelector("nav > .hamBtn");
 let navHamLi = document.querySelectorAll("nav a.hamBtn > div.hamLine");
 navHamLi = Array.prototype.slice.call(navHamLi);
@@ -15,6 +17,8 @@ const naBtn01 = document.querySelector('.naBtn01');
 const naBtn02 = document.querySelector('.naBtn02');
 const naBtn03 = document.querySelector('.naBtn03');
 
+var portExBtn = document.querySelector('div.portEach_nav > a.pE_exitBtn');
+
 var hamToggle = true;
 
 var portBtnEls = document.querySelectorAll('.port_nav > div.port_nav_wrap > div.portBtn > svg.txtBtn');
@@ -22,6 +26,9 @@ portBtnEls = Array.prototype.slice.call(portBtnEls);
 var svgGEls = document.querySelectorAll('.port_nav > div.port_nav_wrap > div.portBtn > svg.txtBtn > g.txtG');
 svgGEls = Array.prototype.slice.call(svgGEls);
 
+var portCon = document.querySelector('section#portEach_con');
+var port = document.querySelectorAll('section#portEach_con > article.port');
+port = Array.prototype.slice.call(port);
 
 reset();
 
@@ -88,23 +95,26 @@ var widthM;
 var heightM;
 
 var clicked = false;
+var index;
 
 function onPortBtn(e){
     e.preventDefault();
     // console.log('click');
     var pT = e.currentTarget;
-    var index = portBtnEls.indexOf(pT);
+    index = portBtnEls.indexOf(pT);
     if(e.type==="click"){
         winWidth = window.innerWidth;
         winHeight = window.innerHeight;
         rect = portBtnEls[index].getBoundingClientRect();
 
-        widthM = winWidth - (rect.x + rect.width);
-        heightM = winHeight - (rect.y + rect.height);
+        // widthM = winWidth - (rect.x + rect.width) - 25;
+        widthM = -rect.x + 15;
+        // heightM = winHeight - (rect.y + rect.height);
+        heightM = -rect.y + 15;
 
         if(!clicked){
-            portBtnEls[index].style.left = widthM + "px";
-            portBtnEls[index].style.top = heightM + "px";
+            // portBtnEls[index].style.left = widthM + "px";
+            // portBtnEls[index].style.top = heightM + "px";
             // for(var i = 0;i < svgGEls.length;i++){
             //     svgGEls[i].style.animation = "erase 2s ease-in-out forwards";
             // }
@@ -112,30 +122,80 @@ function onPortBtn(e){
             var lim=-1;
             var timeD = setInterval(function(){
                 if(lim++<svgGEls.length-1){
-                    svgGEls[lim].style.animation = "erase 0.5s ease-in-out alternate forwards";
+                    svgGEls[lim].style.animation = "erase 0.5s ease-in-out 1 alternate forwards ";
                     svgGEls[lim].style.visibility = "hidden";
+                    portBtnEls[lim].style.visibility = "hidden";
                 }else{
                     clearInterval(timeD);
                 }
-                svgGEls[index].style.animation = "draw 0s ease alternate forwards";
+                for(var i = 0;i<svgGEls[index].children.length;i++){
+                    // svgGEls[index].children[i].style.animation = "draw 0s ease 1 alternate forwards";
+                    // svgGEls[index].children[i].style.visibility= "hidden";
+                }
+                // svgGEls[index].style.animation = "draw 0s ease 1 alternate forwards";
                 // svgGEls[index].style.visibility = "visible";
+                
+                // portBtnEls[index].style.transform = "scale(30)";
+                // portBtnEls[index].style.opacity = "0";
+                // svgGEls[index].style.visibility = "hidden";
             },130);
+            // for(var i = 0;i<svgGEls[index].children.length;i++){
+            //     // svgGEls[index].children[i].style.animation = "draw 0s ease 1 alternate forwards";
+            //     svgGEls[index].children[i].style.transformOrigin = "center center";
+            //     svgGEls[index].children[i].style.transform= "scale(30)";
+            //     svgGEls[index].children[i].style.transition = "all 1s ease-in-out";
+            //     svgGEls[index].children[i].style.opacity = "0";
+            //     svgGEls[index].children[i].style.visibility= "hidden";
+            // }
+            
+            // setTimeout(function(){
+            //     portBtnEls[index].style.visibility = "hidden";
+            // },1500);
+            portCon.style.left = "0";
+            portCon.style.transition = 'all 0.8s ease-in 1.9s';
+            port[index].style.left = "0";
+            port[index].style.transition = 'all 0.8s ease-in 1.6s';
+            setTimeout(function(){
+                html.style.overflowY = "scroll";
+            },2400);
             
         }
-        else if(clicked){
-            portBtnEls[index].style.left = "0px";
-            portBtnEls[index].style.top = "0px";
-        }
-        clicked = !clicked;
+        // else if(clicked){
+        //     portBtnEls[index].style.left = "0px";
+        //     portBtnEls[index].style.top = "0px";
+        // }
+        // clicked = !clicked;
     }
     
 }
 
+function onClickEx(e){
+    e.preventDefault();
+    portCon.style.left = "100%";
+    port[index].style.left = "100%";
+    portCon.style.transition = 'all 0.8s ease-in 0.2s';
+    port[index].style.transition = 'all 0.8s ease-in 0.3s';
+    var lim2=-1;
+    var timeN = setInterval(function(){
+    if(lim2++<svgGEls.length-1){
+        svgGEls[lim2].style.visibility = "visible";
+        svgGEls[lim2].style.animation = "draw 0.5s ease-in-out 1.4s 1 alternate forwards ";
+        portBtnEls[lim2].style.visibility = "visible";
+    }else{
+        clearInterval(timeN);
+    }
+    html.style.overflowY = "hidden";
+},130);
+}
+
+portExBtn.addEventListener('click', onClickEx);
+
 for(var i = 0;i < portBtnEls.length - 6;i++){
     portBtnEls[i].style.transition = "all 1s ease-in-out 1.8s";
     portBtnEls[i].addEventListener('click', onPortBtn);
-    
 }
+
+
 
 function onSvgBtn(e){
     e.preventDefault();

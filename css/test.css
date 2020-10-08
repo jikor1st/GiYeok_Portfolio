@@ -3,6 +3,9 @@
 html{
     overflow:hidden;
 }
+.htmlScrollControll{
+    overflow:hidden;
+}
 html,body{
     width:100%;height:100vh;
     overflow-x: hidden;
@@ -22,7 +25,7 @@ header > h1.mainLogo {
 nav{
     display:flex;flex-direction:row-reverse;
     justify-content:flex-start;
-    z-index:500;
+    z-index:2000;
     position:relative;
     padding:0 120px;
 }
@@ -31,6 +34,7 @@ nav > ul.navHam{
     position: absolute;width:max-content;top:90px;
     display:flex;flex-direction: column;text-align:right;
     height:210px;justify-content: space-between;
+    z-index:3000;
 }
 nav > ul.navHam > li{
     font-family: 'Noto Serif KR', serif;
@@ -172,6 +176,7 @@ section#port_wrap > article.port_nav{
     width:260px;height:260px;display:flex;justify-content: center;align-items: center;
 }
 .txtBtn{
+    z-index:1700;
     position:relative;;top:0;left:0;
 }
 .port_nav > div.port_nav_wrap > div.portBtn > div.txtBtnEmpty {
@@ -189,9 +194,10 @@ article.port_nav > div.port_nav_wrap > .portBtnLine{
 
 section#portEach_con{
     background-color:white;
-    position: absolute;;z-index:1500;
+    position: absolute;z-index:1600;
     width:100%;
     left:100%;top:0;
+    transition:all 0.8s ease-in 1.7s;
 }
 section#portEach_con > div.portEach_nav{
     position:absolute;top:56px;right:120px;
@@ -212,16 +218,25 @@ a.pE_exitBtn > div.line:first-child{
 a.pE_exitBtn > div.line:last-child{
     transform:translate(-50%,-50%) rotateZ(-45deg);
 }
-section#portEach_con > article.port01{
+section#portEach_con > article.port{
+    position:absolute;left:100%;top:0;
+    width:100%;height:100vh;
+    background-color:white;
+    transition:all 0.8s ease-in 1.7s;
     display:flex;flex-wrap:wrap;
 }
-article.port01 > div.port_left{
+section#portEach_con > article.port01{
+    
+}
+article.port > div.port_left{
     width:50%;position:relative;height:100vh;
     display:flex;flex-direction: column;justify-content:space-between;
 }
-article.port01 > div.port_right{
+article.port > div.port_right{
     width:50%;
     position:relative;
+    
+    /* overflow-x: ; */
 }
 div.port_left > div.port_name_con{
     margin-left:31.979%;margin-top:20%;
@@ -232,10 +247,10 @@ div.port_name_con > dl.port_name{
 }
 div.port_name_con > dl.port_name > dd{
     font-size:1.375em;color:#0F78F4;font-weight:500;
-    margin-bottom: 24px;
+    margin-bottom: 24px;z-index:2000;
 }
 div.port_name_con > dl.port_name > dt{
-    width:fit-content;
+    width:fit-content;z-index:2000;
     font-family: 'Noto Serif KR', serif;
     font-size:3.125em;font-weight:700;
     margin-left:-5px;margin-bottom:18px;
@@ -315,15 +330,28 @@ div.ad > svg.as > g.ag{
 svg.as > g.ag > .st1{
     stroke-linecap: butt;
 }
-
+@media screen and (max-width:1600px){
+    nav{
+        padding:0 100px;
+        display:flex;flex-direction:row-reverse;
+        justify-content:flex-start;
+        z-index:500;
+        position:relative;
+    }
+    nav > ul.navHam{
+        position: absolute;width:max-content;top:0;right:250px;
+        display:flex;flex-direction: row;text-align:right;
+        height:fit-content;justify-content: space-between;width:42vw;
+    }
+}
 @media screen and (max-width:1400px){
-    section#portEach_con > article.port01{
+    section#portEach_con > article.port{
         /* display:flex;flex-direction: column;flex-wrap:wrap; */
     }
-    article.port01 > div.port_left{
+    article.port > div.port_left{
         width:100%;padding:0 56px;height:fit-content;
     }
-    article.port01 > div.port_right{
+    article.port > div.port_right{
         height:fit-content;width:100%;margin:100px 0;
     }
     div.port_left > div.port_name_con{
@@ -340,12 +368,41 @@ svg.as > g.ag > .st1{
     }
 }
 @media screen and (max-width:1200px){
+    *{font-size:14px;}
+    /*header 패딩 조절*/
+    header > h1.mainLogo {
+    padding:0 56px;
+    }
+    nav{
+    padding:0 56px;
+    }
     section#portEach_con > div.portEach_nav{
         position:absolute;top:56px;right:56px;
     }
+    section#port_wrap > article.port_nav{
+        margin-top:10vw;
+        
+    }
+    nav{
+        padding:0 100px;
+        display:flex;flex-direction:row-reverse;
+        justify-content:flex-start;
+        z-index:500;
+        position:relative;
+    }
+    nav > ul.navHam{
+        position: absolute;width:max-content;top:0;right:160px;
+        display:flex;flex-direction: row;text-align:right;
+        height:fit-content;justify-content: space-between;width:42vw;
+    }
+   
+    
+}
+@media screen and(max-width:1050px){
+    
 }
 @media screen and (max-width:920px){
-    article.port01 > div.port_left{
+    article.port > div.port_left{
         height:fit-content;padding:0 0;
     }
     
@@ -354,10 +411,10 @@ svg.as > g.ag > .st1{
         display:flex;justify-content: center;align-items: center;
     }
     div.portEach_nav > a.pE_exitBtn{
-        width:30px;height:30px;border:1.2px solid black;
+        width:34px;height:34px;border:2px solid black;
     }
     a.pE_exitBtn > div.line{
-        width:20px;height:1.2px;
+        width:22px;height:2px;
     }
     
 }
