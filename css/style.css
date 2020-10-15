@@ -67,7 +67,7 @@ svg{
 }
 main {
     position:relative;
-    overflow:hidden;
+    /* overflow:hidden; */
     width:100%;height:100vh;
 }
 section {
@@ -87,9 +87,11 @@ section {
 }
 #mainPage > article.introCon > div.introMain{
     font-family: 'Noto Serif KR', serif;
+    position:relative;
+    z-index:300;
 }
 div.introMain > h2.intHangle{
-    font-size:1.750em;font-weight:300;margin-bottom:24px;
+    font-size:1.6em;font-weight:300;margin-bottom:24px;
 }
 div.introMain > h2.intHangle > span{
     font-weight:700;
@@ -99,6 +101,8 @@ div.introMain > h1.myNameIs{
 }
 div.introMain > h1.myNameIs > span{
     color:#0F78F4;font-weight:900;
+    filter:drop-shadow(0 2px 8px #d3d3d396);
+    display:inline-block;
 }
 div.introMain > hr{
     width:36px;border:2px solid black;
@@ -111,6 +115,8 @@ div.introMain > hr{
 div.introSub > dl.inS01{
     visibility: hidden;
     opacity:0;
+    z-index:300;
+    position:relative;
 }
 @keyframes displayT {
     0%{
@@ -144,7 +150,7 @@ div.introSub > dl.inS01{
     }
 }
 div.introSub > dl.inS01 > dd{
-    font-size:1em;line-height:2em;font-weight:300;
+    font-size:1em;line-height:2em;font-weight:400;
     width:fit-content;
 }
 div.introSub > dl.inS01 > div{
@@ -153,7 +159,7 @@ div.introSub > dl.inS01 > div{
 div.introSub > dl.inS01 > div > dt{
     font-family: 'Noto Serif KR', serif;
     font-size:1.750em;font-weight:900;
-    color:#D6DBF1;
+    color:rgb(43, 44, 46);
     margin-top:19px;
     width:fit-content;
 }
@@ -163,16 +169,13 @@ div.introSub > dl.inS01 > div > hr{
 }
 @keyframes inS01Hr {
     0%{
-
+        width:0vw;
     }
-    33%{
-
-    }
-    66%{
-
+    70%{
+        width:15vw;
     }
     100%{
-
+        width:12.39vw;
     }
 }
 div.introSub > dl.inS02{
@@ -185,13 +188,30 @@ div.introSub > dl.inS02 > div {
 div.introSub > dl.inS02 > div > div.dot {
     font-size:0;width:6px;height:6px;
     background-color: #D6DBF1;border-radius:50px;
-    position: absolute;left:50%;transform:translateX(-50%);
+    position: absolute;left:50%;transform:translateX(-50%) scale(1);
+    /* transition :all 1.5s ease; */
     margin-top:-15px;
+    z-index:-1;
+}
+@keyframes scaleDot{
+    0%{
+        transform:translateX(-50%) scale(1);
+        opacity:1;
+    }
+    66%{
+        transform:translateX(-50%) scale(40);
+        opacity:0.3;
+    }
+    100%{
+        transform:translateX(-50%) scale(1);
+        opacity:1;
+    }
 }
 div.introSub > dl.inS02 > div > dt{
     font-family: 'Noto Serif KR', serif;
     font-size:1.750em;font-weight:900;
-    color:#D6DBF1;margin-top:30px;
+    color:rgb(43, 44, 46);
+    margin-top:30px;
     width:fit-content;
 }
 div.introSub > dl.inS02 > dd{
@@ -212,21 +232,22 @@ article.ctStBtnCon > div.jgySvgCon {
     
 }
 div.jgySvgCon > svg.jgy_svg:first-child{
-    position: fixed;top:-3%;left:50%;transform:translateX(-50%);height:26.680vh;
+    position: fixed;top:-3%;left:50%;transform:translate(-50%,0);height:26.680vh;
     /* transform:translateY(-13%); */
     transition: all 0.8s ease;
 }
 div.jgySvgCon > svg.jgy_svg:nth-child(2){
     position: fixed;top:50%;left:50%;transform:translate(-50%,-50%);height:26.680vh;
     /* transform:translateY(13%); */
+    transition: all 0.8s ease;
 }
 div.jgySvgCon > svg.jgy_svg:last-child{
-    position: fixed;bottom:-3%;right:50%;transform:translateX(50%);height:26.680vh;
+    position: fixed;bottom:-3%;right:50%;transform:translate(50%,0);height:26.680vh;
     /* transform:translateY(13%); */
     transition: all 0.8s ease;
 }
 div.jgySvgCon > svg.jgy_svg > g{
-    fill:none; stroke:#F8F8FD; 
+    fill:none; stroke:#F8F8FD;
     stroke-width:60;
     stroke-linecap:square; stroke-miterlimit:10;
     /* stroke-dashoffset:230; */
@@ -260,7 +281,7 @@ div.jgySvgCon > svg.jgy_svg > g.j_g{
     }
 }
 div.jgySvgCon > svg.jgy_svg > g.g_g{
-    stroke-dashoffset:100;
+    stroke-dashoffset:600;
     stroke-dasharray:600;
     animation:drawGG 2.5s ease forwards;
 }
@@ -281,6 +302,17 @@ div.jgySvgCon > svg.jgy_svg > g.g_g{
         stroke-width:60;
         visibility:visible;
         opacity:1;
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes drawUndraw{
+    0%{
+        stroke-dashoffset: 0;
+    }
+    40%{
+        stroke-dashoffset: 600;
+    }
+    100%{
         stroke-dashoffset: 0;
     }
 }
@@ -310,19 +342,63 @@ div.jgySvgCon > svg.jgy_svg > g.y_g{
     }
 }
 
-
+div.description{
+    width:254px;height:58px;border:1px solid #7B7B7D;border-radius:9px;
+    background-color:rgba(255, 255, 255, 0.85);
+    filter:drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.13));
+    position: fixed;left:50%;top:16%;transform:translateX(-50%);
+    z-index:600;text-align:center;
+}
+@keyframes unloadDescription{
+    0%{
+        visibility: visible;
+        opacity:1;
+        transform:translateY(0) translateX(-50%);
+    }
+    90%{
+        visibility: visible;
+        opacity:0;
+        transform:translateY(-45px) translateX(-50%);
+    }
+    100%{
+        visibility: hidden;
+        opacity:0;
+        transform:translateY(-45px) translateX(-50%);
+    }
+}
+div.description > p{
+    line-height:58px;
+}
+div.description > p > span{
+    color:#0F78F4;font-weight:500;
+}
 article.ctStBtnCon > div.stBtn{
     display:flex;width:254px;justify-content: space-between;
     position: fixed;left:50%;top:26%;transform:translateX(-50%);
-    z-index:600;
+    z-index:2100;height:fit-content;
 }
 article.ctStBtnCon > div.stBtn > a{
     display:inline-block;background-color:#0F78F4;
     width:38px;height:38px;border-radius:100px;
     border:1px solid black;font-size:0;
     position:relative;
-
     transition:all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+div.motion01{
+    font-size:0;
+    background-color:#55a4ff9d;
+    width:38px;height:38px;border-radius:100px;position:absolute;right:1px;top:1px;
+    animation:motion01 1s ease-in-out infinite forwards;
+}
+@keyframes motion01{
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+    100%{
+        transform:scale(2);
+        opacity:0;
+    }
 }
 article.ctStBtnCon > div.stBtn > a.minus > div {
     width:19px;height:3px;background-color:white;
@@ -333,7 +409,42 @@ article.ctStBtnCon > div.stBtn > p{
     font-size:22px;font-weight:600;
     line-height:40px;
 }
-
+@keyframes pagePBottom {
+    0%{
+        transform:translateY(0);
+        opacity:1;
+    }
+    33%{
+        transform:translateY(-30px);
+        opacity:0;
+    }
+    66%{
+        transform:translateY(30px);
+        opacity:0;
+    }
+    100%{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+@keyframes pagePTop {
+    0%{
+        transform:translateY(0);
+        opacity:1;
+    }
+    33%{
+        transform:translateY(30px);
+        opacity:0;
+    }
+    66%{
+        transform:translateY(-30px);
+        opacity:0;
+    }
+    100%{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
 article.ctStBtnCon > div.stBtn > a.plus > div:first-child{
     width:19px;height:3px;background-color:white;
     position: absolute;left:50%;top:50%;transform:translate(-50%,-50%);
@@ -439,6 +550,7 @@ div.mainSvgCon > div.gCon{
 }
 div.mainSvgCon > div > svg.giyeok_svg {
     width:100%;margin-bottom:-90px;height:100%;
+    filter:drop-shadow(0 15px 30px #0f7af49a);
 }
 div.mainSvgCon > div > svg.giyeok_svg > g.mainG{
     fill:none; stroke:#0F78F4; 
@@ -463,6 +575,21 @@ div.mainSvgCon > div > svg.giyeok_svg > g.mainG{
         visibility:visible;
         opacity:1;
         stroke-dashoffset: 0;
+    }
+}
+@keyframes undrawG{
+    0%{
+        visibility:visible;
+        opacity:1;
+        stroke-dashoffset: 0;
+    }
+    70%{
+        opacity:1;
+    }
+    100%{
+        visibility:hidden;
+        opacity:0;
+        stroke-dashoffset: 1200;
     }
 }
 div.mainSvgCon > div > svg.lineV {
@@ -505,6 +632,8 @@ section#contactPage > article > div.intro_ctCon{
 div.intro_ctCon > h2.intro_ct{
     font-weight:200;
     font-size:1.375em;line-height:2.7em;
+    transform:scale(15);
+    visibility: hidden;
 }
 div.intro_ctCon > hr {
     width:18px;border:none;border-top:3px solid black;display:inline-block;
@@ -572,6 +701,9 @@ div.info_con > dl.inform > dd{
     article.ctStBtnCon > div.stBtn{
         left:75%;top:26%;transform:translateX(-50%);
     }
+    div.description{
+        left:75%;
+    }
     div.mainSvgCon {
         /* transform-origin:bottom right; */
         /* transform:scale(0.7); */
@@ -634,6 +766,9 @@ div.info_con > dl.inform > dd{
     }
     div.introSub > dl.inS02 > div > dt{
         color:black;
+    }
+    div.description{
+        left:50%;top: unset;bottom:110px;
     }
     /*두께조절 버튼 위치조정*/
     article.ctStBtnCon > div.stBtn{

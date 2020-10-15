@@ -11,76 +11,24 @@ html,body{
     width:100%;height:100vh;
 }
 ::-webkit-scrollbar{
-    display:none;
-}
-header{
-    display:flex;justify-content: space-between;
-    position:fixed;top:0;left:0;
-    width:100%;
-    padding:56px 0;
-    z-index:500;
-}
-header > h1.mainLogo {
-    padding:0 120px;
-}
-nav{
-    display:flex;flex-direction:row-reverse;
-    width:100%;
-    justify-content:flex-start;
-    z-index:2000;
-    position:relative;
-    padding:0 120px;
-}
-nav > ul.navHam{
     /* display:none; */
-    position: absolute;width:max-content;top:90px;
-    display:flex;flex-direction: column;text-align:right;
-    height:210px;justify-content: space-between;
-    z-index:3000;
-}
-nav > ul.navHam > li{
-    font-family: 'Noto Serif KR', serif;
-    font-size:1.813em;font-weight:700;
-}
-nav > a.hamBtn{
-    display:inline-block;vertical-align: top;
-    width:28px;height:20px;
-    display:flex;flex-direction: column;
-    justify-content: space-between;
-    position:relative;
-}
-nav > a.hamBtn > div.hamLine{
-    font-size:0;width:inherit;height:3px;background-color:#0F78F4;
-    position: absolute;
-    transition:all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-}
-nav > a.hamBtn > div.hamLine:first-child{
-    top:0;left:0;
-    transform-origin:top left;
-    /* transform:rotateZ(45deg); */
-}
-nav > a.hamBtn > div.hamLine:nth-child(2){
-    top:50%;transform:translateY(-50%);left:0;
-}
-nav > a.hamBtn > div.hamLine:last-child{
-    width:60%;
-    bottom:0;right:0;
-    transform-origin:bottom left;
-    /* transform:translateY(2px) rotateZ(-45deg); */
 }
 div#allWrap{
     /* overflow-x: hidden; */
+    /* overflow:hidden; */
 }
 main{
     /* position:relative; */
+    position:absolute;top:0;left:0;
     /* width:100%;height:100vh; */
     /* width:100%;overflow-x: hidden; */
+    /* overflow:hidden; */
 }
 section#port_wrap{
     /* display: none; */
     /* width:100%; */
-   
-    
+    position:relative;top:100vh;
+    overflow-y:scroll;
 }
 section#port_wrap > article.port_intro{
     position: absolute;top:6vw;left:7vw;
@@ -88,19 +36,44 @@ section#port_wrap > article.port_intro{
 article.port_intro > .port_title > h2{
     font-family: 'Noto Serif KR', serif;
     font-weight:200;
-    font-size:1.375em;line-height:2em;
+    font-size:1.5em;line-height:2.1em;
 }
 article.port_intro > .port_title > hr {
     width:18px;border:none;border-top:3px solid black;display:inline-block;
+    margin-top:15px;
 }
 article.port_intro > .port_title > h2 > span{
     font-weight:700;
 }
 article.port_intro > p.port_text{
     font-weight:300;font-size:1em;line-height:1.8em;
-    margin-top:1.8vw;margin-left:-2vw;
+    margin-top:1.6vw;
 }
-
+@keyframes unLoadPort{
+    0%{
+        transform:translateY(0);
+        opacity:1;
+        visibility:visible;
+    }
+    100%{
+        transform:translateY(-50px);
+        opacity:0;
+        visibility:hidden;
+    }
+}
+@keyframes LoadPort{
+    0%{
+        transform:translateY(-50px);
+        opacity:0;
+        visibility:hidden;
+        
+    }
+    100%{
+        transform:translateY(0);
+        opacity:1;
+        visibility:visible;
+    }
+}
 svg{
     overflow:visible;
     vertical-align: top;
@@ -160,6 +133,7 @@ svg{
         stroke-dashoffset:750;
     }
 }
+
 .txtG > .st1{
     stroke-linecap: butt;
 }
@@ -183,10 +157,15 @@ section#port_wrap > article.port_nav{
 }
 .port_nav > div.port_nav_wrap > div.portBtn {
     width:260px;height:260px;display:flex;justify-content: center;align-items: center;
+    cursor:pointer;z-index:2000;
+}
+.port_nav > div.port_nav_wrap > div.portBtnX{
+    width:260px;height:260px;display:flex;justify-content: center;align-items: center;font-size:0;
 }
 .txtBtn{
     z-index:1700;
     position:relative;;top:0;left:0;
+    /* filter:drop-shadow(0 3px 14px #f0f0f05b); */
 }
 .port_nav > div.port_nav_wrap > div.portBtn > div.txtBtnEmpty {
     font-size:0;
@@ -208,10 +187,22 @@ section#portEach_con{
     height:100vh;
     /* display:none; */
     background-color:white;
-    position: absolute;z-index:1600;
+    position: absolute;z-index:2100;
     width:100%;
     left:100%;top:0;
     transition:all 0.8s ease-in 1.7s;
+}
+.portEach_hrCon{width:100%;height:100vh;}
+.portEach_hrCon > hr {
+    width:100%;border:none;border:1px dashed #D6DBF1;
+    z-index:1000;position:absolute;top:5.7vw;left:0;
+}
+.portEach_hrCon > div.hrLine{
+    width:80vw;height:100vh;font-size:0;
+    border:none;
+    border-left:1px dashed #D6DBF1;
+    border-right:1px dashed #D6DBF1;
+    z-index:500;position:absolute;top:0;left:50%;transform:translateX(-50%);
 }
 section#portEach_con > div.portEach_nav{
     position:absolute;top:56px;right:120px;
@@ -235,9 +226,11 @@ a.pE_exitBtn > div.line:last-child{
 section#portEach_con > article.port{
     position:absolute;left:100%;top:0;
     width:100%;height:100vh;
-    background-color:white;
+    /* background-color:white; */
     transition:all 0.8s ease-in 1.7s;
     display:flex;flex-wrap:wrap;
+    z-index:700;
+    transform:translateX(0) rotateY(130deg) perspective(300px);
 }
 section#portEach_con > article.port01{
     
@@ -273,6 +266,7 @@ div.port_name_con > hr{
     width:18px;border:none;border-top:3px solid black;display:inline-block;
 }
 div.port_img_area{
+    z-index:2000;
     position:relative;
     /* position: absolute;bottom:0;left:13.3333%; */
     width:100%;height:500px;
@@ -286,7 +280,9 @@ div.port_img_area{
     width:100%;
 }
 
-
+div.port_img_area > div.port_img_con{
+    width:100%;height: inherit;overflow-y:hidden;
+}
 div.port_img_area > div.port_img_cover{
     position: absolute;width:100%;height:100%;
     background-color:#091624c9;cursor:pointer;
@@ -331,9 +327,9 @@ div.port_subCon > p.port_p{
 div.ad_con > div.adEmpty{
     font-size:0;
 }
-div.port_img_area > div.ad_con{
-    display:flex;width:81.047%;height:75%;
-    flex-wrap:wrap;justify-content: center;
+div.port_img_area > div.port_img_con > div.ad_con{
+    display:flex;width:100%;height:100%;
+    flex-wrap:wrap;justify-content: center;align-items: center;
 }
 
 div.ad_con > div.ad{
@@ -464,10 +460,12 @@ svg.as > g.ag > .st1{
     .port_nav > div.port_nav_wrap > div.portBtn {
         width:200px;height:200px;margin-top:65px;
     }
-    .port_nav > div.port_nav_wrap > div.portBtn:first-child{
+    .port_nav > div.port_nav_wrap > div.portBtnX{
         display:none;
     }
-
+    .portEach_hrCon > div.hrLine{
+        width:85vw;
+    }
     div.port_left > div.port_name_con{
         margin-left:56px;transform:translateX(0);
     }
