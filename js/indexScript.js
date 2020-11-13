@@ -149,49 +149,50 @@ function onClickContact(e){
 
 function Work(){
     tranBtn = true;
-    var tt = 0;
-    var mm = 0;
-    switch(indexMain){
-        case 0:
-            mm = 4;
-            break;
-        case 1:
-            mm = 3;
-            break;
-        case 2:
-            mm = 2;
-            break;
-        case 3:
-            mm = 1;
-            break;
-        case 4:
-            mm = 0;
-            break;
-    }
-    var timeS = setInterval(function(){
-        if(tt++<mm){
-            indexMain++;
-            fontWeightP.style.animation = "fontRight 0.8s " + fontEasing + " 1 alternate";
-            setTimeout(function(){
-                minusBtn.style.animation = "";
-                fontWeightP.style.animation = "";
-                pageNow.style.animation = "";
-            },800);
-        }
-        else if(tt-->mm){
-            indexMain--;
-            fontWeightP.style.animation = "fontLeft 0.8s " + fontEasing + " 1 alternate";
-            setTimeout(function(){
-                minusBtn.style.animation = "";
-                fontWeightP.style.animation = "";
-                pageNow.style.animation = "";
-            },800);
-        }
-        else{
-            clearInterval(timeS);
-        }
+    
+    console.log(indexMain);
+    if(indexMain > 3){
+        indexMain--;
+        fontWeightP.style.animation = "fontRight 0.8s " + fontEasing + " 1 alternate";
+        setTimeout(function(){
+            minusBtn.style.animation = "";
+            fontWeightP.style.animation = "";
+            pageNow.style.animation = "";
+        },800);
         ctlDs();
-    },1000);
+    }
+    else if(indexMain < 3){
+        var tt = 0;
+        var mm = 0;
+        switch(indexMain){
+            case 0:
+                mm = 3;
+                break;
+            case 1:
+                mm = 2;
+                break;
+            case 2:
+                mm = 1;
+                break;
+        }
+        var timeS = setInterval(function(){
+            if(tt++<mm){
+                indexMain++;
+                fontWeightP.style.animation = "fontLeft 0.8s " + fontEasing + " 1 alternate";
+                setTimeout(function(){
+                    minusBtn.style.animation = "";
+                    fontWeightP.style.animation = "";
+                    pageNow.style.animation = "";
+                },800);
+            }
+            else{
+                clearInterval(timeS);
+            }
+            ctlDs();
+        },1000);
+    }
+    plusBtn.style.backgroundColor = "#0F78F4";
+    minusBtn.style.backgroundColor = "#0F78F4";
 }
 function hangle(){
     tranBtn = true;
@@ -317,6 +318,9 @@ function ctlDs(){
         sP = -15;
         jgyP = 30;
         jgyTP = 10;
+        navAEls[0].style.color = "#0f78f4";
+        navAEls[1].style.color = "#000";
+        navAEls[2].style.color = "#000";
         description.style.animation = 'unloadDescription 0.5s ease-in-out 1 forwards';
         motion01.style.animation = "motion01 1s ease-in-out 1 forwards";
         mainDot.style.animation = '';
@@ -327,6 +331,9 @@ function ctlDs(){
         sP = -30;
         jgyP = 9;
         jgyTP = 50;
+        navAEls[0].style.color = "#0f78f4";
+        navAEls[1].style.color = "#000";
+        navAEls[2].style.color = "#000";
         // mainDot.style.transform = 'translateX(-50%) scale(40)';
         mainDot.style.animation = 'scaleDot 1.5s ease 0.5s forwards';
         // mainDot.style.transition = "all 0.8s ease 0.8s";
@@ -703,6 +710,9 @@ var html = document.querySelector('html');
 const nav = document.querySelector('nav');
 
 var portExBtn = document.querySelector('div.portEach_nav > a.pE_exitBtn');
+var portEachBtnCon = document.querySelector('.portEach_btn_con');
+var portEachBtn = document.querySelectorAll('.portEach_btn_con > .portEach_btnCan');
+portEachBtn = Array.prototype.slice.call(portEachBtn);
 
 var portBtnEls = document.querySelectorAll('.port_nav > div.port_nav_wrap > div.portBtn');
 portBtnEls = Array.prototype.slice.call(portBtnEls);
@@ -752,8 +762,10 @@ var index;
 portConReset();
 function portConReset(){
     portCon.style.opacity = "0";
+    portCon.style.visibility = "hidden";
     for(var i =0;i<port.length;i++){
         port[i].style.opacity = "0";
+        port[i].style.visibility = "hidden";
     }
 }
 
@@ -768,18 +780,22 @@ function onPortBtn(e){
         if(!clicked){
             unDraw();
             // portCon.style.left = "0";
-            portCon.style.transform = 'translateX(-100vw)';
             portCon.style.opacity = "1";
-            portCon.style.transition = 'transform 0.7s ease-in 0.45s, opacity 0.2s ease-in 0.45s';
+            portCon.style.visibility = "visible";
+            portCon.style.transition = 'opacity 0.4s ease-in 0.45s';
             // port[index].style.left = "0";
-            port[index].style.transform = 'translateX(-100vw) rotateY(0) perspective(300px)';
+            // port[index].style.transform = 'translateX(-100vw)';
+            port[index].style.visibility = "visible";
             port[index].style.opacity = "1";
-            port[index].style.transition = 'transform 0.6s ease-in 0.8s, opacity 0.8s ease-in 1.1s';
+            port[index].style.transition = 'opacity 0.8s ease-in 1.1s';
             setTimeout(function(){
                 // html.style.overflowY = "scroll";
                 // html.style.overflowX = "hidden";
             },2400);
-            
+            portEachBtn[index].style.border = "2px solid #0f78f4";
+            portEachBtn[index].style.color = "#0f78f4";
+
+            portEachBtnCon.style.visibility = 'visible';
         }
     }
     
@@ -787,26 +803,37 @@ function onPortBtn(e){
 
 function onClickEx(e){
     e.preventDefault();
-    // portCon.style.left = "100%";
-    portCon.style.transform = 'translateX(0)';
-    portCon.style.opacity = "0";
-    port[index].style.left = "100%";
-    port[index].style.transform = 'translateX(0) rotateY(130deg) perspective(300px)';
-    port[index].style.opacity = "0";
     portCon.style.transition = 'all 0.8s ease-in 0.2s';
-    port[index].style.transition = 'all 0.8s ease-in 0.3s';
+    portCon.style.opacity = "0";
+    portCon.style.visibility = "hidden";
+    // port[index].style.left = "100%";
+    for(var i = 0;i < port.length;i++){
+        port[i].style.visibility = "hidden";
+        port[i].style.opacity = "0";
+        port[i].style.transition = 'all 0.8s ease-in 0.3s';
+    }
     var lim2=-1;
     var timeN = setInterval(function(){
-    if(lim2++<svgGEls.length-1){
-        svgGEls[lim2].style.visibility = "visible";
-        svgGEls[lim2].style.animation = "draw 0.35s ease-in-out 0.9s 1 alternate forwards ";
-        portBtnEls[lim2].style.visibility = "visible";
-    }else{
-        clearInterval(timeN);
+        if(lim2++<svgGEls.length-1){
+            svgGEls[lim2].style.visibility = "visible";
+            svgGEls[lim2].style.animation = "draw 0.35s ease-in-out 0.9s 1 alternate forwards ";
+            portBtnEls[lim2].style.visibility = "visible";
+        }else{
+            clearInterval(timeN);
+        }
+        // html.style.overflowY = "hidden";
+        // html.style.overflowX = "hidden";
+        
+    
+    },110);
+    for(var i = 0;i < portEachBtn.length;i++){
+        portEachBtn[i].style.border = "1px solid #DFDFDF";
+        portEachBtn[i].style.color = "#DFDFDF";
     }
-    // html.style.overflowY = "hidden";
-    // html.style.overflowX = "hidden";
-},110);
+    setTimeout(function(){
+        portEachBtnCon.style.visibility = 'hidden';
+    },400);
+    
 }
 
 portExBtn.addEventListener('click', onClickEx);
@@ -815,7 +842,52 @@ for(var i = 0;i < portBtnEls.length - 6;i++){
     portBtnEls[i].style.transition = "all 1s ease-in-out 1.8s";
     portBtnEls[i].addEventListener('click', onPortBtn);
 }
-
+function onPortEachBtn(e){
+    e.preventDefault();
+    var inx = e.currentTarget;
+    var EIndex = portEachBtn.indexOf(inx);
+    if(e.type === "click"){
+        for(var i = 0; i < port.length; i++){
+            port[i].style.opacity = "0";
+            port[i].style.visibility = "hidden";
+            portEachBtn[i].style.border = "1px solid #DFDFDF";
+            portEachBtn[i].style.fontFamily = "S-CoreDream-4Regular";
+            portEachBtn[i].style.color = "#DFDFDF";
+            port[i].style.transition = 'transform 0.75s ease-in 0.2s, opacity 0.55s ease-in';
+        }
+        port[EIndex].style.visibility = "visible";
+        port[EIndex].style.opacity = "1";
+        portEachBtn[EIndex].style.border = "2px solid #0f78f4";
+        portEachBtn[EIndex].style.color = "#0f78f4";
+        portEachBtn[EIndex].style.fontFamily = "S-CoreDream-7ExtraBold";
+        index = EIndex;
+    }
+    if(e.type === "mouseover"){
+        for(var i = 0; i < port.length; i++){
+            portEachBtn[i].style.border = "1px solid #DFDFDF";
+            portEachBtn[i].style.fontFamily = "S-CoreDream-4Regular";
+            portEachBtn[i].style.color = "#DFDFDF";
+        }
+        portEachBtn[EIndex].style.border = "2px solid #0f78f4";
+        portEachBtn[EIndex].style.color = "#0f78f4";
+        portEachBtn[EIndex].style.fontFamily = "S-CoreDream-7ExtraBold";
+    }else if(e.type === "mouseleave"){
+        for(var i = 0; i < port.length; i++){
+            portEachBtn[i].style.border = "1px solid #DFDFDF";
+            portEachBtn[i].style.fontFamily = "S-CoreDream-4Regular";
+            portEachBtn[i].style.color = "#DFDFDF";
+        }
+        portEachBtn[index].style.border = "2px solid #0f78f4";
+        portEachBtn[index].style.color = "#0f78f4";
+        portEachBtn[index].style.fontFamily = "S-CoreDream-7ExtraBold";
+        console.log('leave : ' + index);
+    }
+}
+for(var i = 0;i < portEachBtn.length;i++){
+    portEachBtn[i].addEventListener('click', onPortEachBtn);
+    portEachBtn[i].addEventListener('mouseover', onPortEachBtn);
+    portEachBtn[i].addEventListener('mouseleave', onPortEachBtn);
+}
 
 
 function onSvgBtn(e){
@@ -847,9 +919,6 @@ for(var i = 0;i < svgGEls.length - 6;i++){
     portBtnEls[i].addEventListener('mouseleave', onSvgBtn);
 }
 
-function portpageinout(){
-    
-}
 /*
 var body = document.querySelector('body');
 var sclH = body.scrollTop;
@@ -874,30 +943,30 @@ body.addEventListener('scroll', onScrollWindow);
 var as = document.querySelectorAll('svg.as');
 as = Array.prototype.slice.call(as);
 */
-function onMousePortImgArea(e){
-    e.preventDefault();
-    var tarGet = e.currentTarget;
-    var id = portImgArea.indexOf(tarGet);
-    portImgCover[id].style.transition = "all 0.5s ease-in-out";
-    if(e.type === "mouseenter"){
-        portImgCover[id].style.opacity = "0";
-        portImgCover[id].style.visibility = "hidden";
-        // portImgCon[id].style.overflowY = "scroll";
-        portImgArea[id].style.overflowY = "scroll";
-    }
-    else if(e.type === "mouseleave"){
-        for(var i = 0; i < portImgCover.length;i++){
-            portImgCover[i].style.opacity = "1";
-            portImgCover[i].style.visibility = "visible";
-            portImgArea[i].style.overflowY = "hidden";
-            portImgArea[i].style.scrollBehavior = 'smooth';
-            portImgArea[i].scrollTop = "0";
-        }
+// function onMousePortImgArea(e){
+//     e.preventDefault();
+//     var tarGet = e.currentTarget;
+//     var id = portImgArea.indexOf(tarGet);
+//     portImgCover[id].style.transition = "all 0.5s ease-in-out";
+//     if(e.type === "mouseenter"){
+//         portImgCover[id].style.opacity = "0";
+//         // portImgCover[id].style.visibility = "hidden";
+//         // portImgCon[id].style.overflowY = "scroll";
+//         portImgArea[id].style.overflowY = "scroll";
+//     }
+//     else if(e.type === "mouseleave"){
+//         for(var i = 0; i < portImgCover.length;i++){
+//             portImgCover[i].style.opacity = "1";
+//             // portImgCover[i].style.visibility = "hidden";
+//             portImgArea[i].style.overflowY = "hidden";
+//             portImgArea[i].style.scrollBehavior = 'smooth';
+//             portImgArea[i].scrollTop = "0";
+//         }
         
-    }
+//     }
     
-}
-for(var i = 0; i < portImgArea.length;i++){
-    portImgArea[i].addEventListener('mouseenter', onMousePortImgArea);
-    portImgArea[i].addEventListener('mouseleave', onMousePortImgArea);
-}
+// }
+// for(var i = 0; i < portImgArea.length;i++){
+//     portImgArea[i].addEventListener('mouseenter', onMousePortImgArea);
+//     portImgArea[i].addEventListener('mouseleave', onMousePortImgArea);
+// }

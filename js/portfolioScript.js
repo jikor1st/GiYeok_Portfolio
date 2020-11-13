@@ -111,11 +111,6 @@ function onPortBtn(e){
         winHeight = window.innerHeight;
         rect = portBtnEls[index].getBoundingClientRect();
 
-        // widthM = winWidth - (rect.x + rect.width) - 25;
-        widthM = -rect.x + 15;
-        // heightM = winHeight - (rect.y + rect.height);
-        heightM = -rect.y + 15;
-
         if(!clicked){
             // portBtnEls[index].style.left = widthM + "px";
             // portBtnEls[index].style.top = heightM + "px";
@@ -229,9 +224,6 @@ for(var i = 0;i < svgGEls.length - 6;i++){
     portBtnEls[i].addEventListener('mouseleave', onSvgBtn);
 }
 
-function portpageinout(){
-    
-}
 var body = document.querySelector('body');
 var sclH = body.scrollTop;
 var sclFirst = true;

@@ -1,5 +1,23 @@
-*{font-size:16px;font-family: 'Noto Sans KR', sans-serif;color:black;}
+*{font-size:16px;font-family: 'S-CoreDream-4Regular';color:black;}
 /* @font import */
+@font-face {
+    font-family: 'S-CoreDream-4Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-7ExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap');
 /*
 font-family: 'Noto Sans KR', sans-serif;
@@ -220,7 +238,7 @@ div.introSub > dl.inS02 > dd{
     width:fit-content;
 }
 div.introSub > dl.inS02 > dd > span{
-    font-weight:700;
+    font-family: 'S-CoreDream-7ExtraBold';
 }
 
 #mainPage > article.ctStBtnCon {
@@ -370,7 +388,7 @@ div.description > p{
     line-height:58px;
 }
 div.description > p > span{
-    color:#0F78F4;font-weight:500;
+    color:#0F78F4;font-family: 'S-CoreDream-7ExtraBold';
 }
 article.ctStBtnCon > div.stBtn{
     display:flex;width:254px;justify-content: space-between;
@@ -550,7 +568,7 @@ div.mainSvgCon > div.gCon{
 }
 div.mainSvgCon > div > svg.giyeok_svg {
     width:100%;margin-bottom:-90px;height:100%;
-    filter:drop-shadow(0 15px 30px #0f7af49a);
+    filter:drop-shadow(0 10px 20px #0f7af477);
 }
 div.mainSvgCon > div > svg.giyeok_svg > g.mainG{
     fill:none; stroke:#0F78F4; 
@@ -668,7 +686,7 @@ div.info_con > dl.inform > dd{
     margin-bottom:45px;
 }
 .link_contact_con{
-    display:flex;width:75%;justify-content: space-between;
+    display:flex;width:50%;justify-content: space-between;
 }
 .link_contact_con > a {
     border-radius:600px;display: inline-block;width:fit-content;height:fit-content;
@@ -717,7 +735,7 @@ div.info_con > dl.inform > dd{
     div.introSub > dl.inS02 {
         /* visibility: "hidden"; */
     }
-    nav{
+    /* nav{
         display:flex;flex-direction:row-reverse;
         justify-content:flex-start;
         z-index:500;
@@ -727,7 +745,7 @@ div.info_con > dl.inform > dd{
         position: absolute;width:max-content;top:0;right:160px;
         display:flex;flex-direction: row;text-align:right;
         height:fit-content;justify-content: space-between;width:42vw;
-    }
+    } */
 }
 /*mobile media query*/
 @media screen and (max-width:700px){
@@ -783,7 +801,7 @@ div.info_con > dl.inform > dd{
         /* height:24vh; */
     }
     section#contactPage > article > div.intro_ctCon{
-        margin-bottom:4vh;
+        margin-bottom:15vh;
     }
     div.contact_con > h2{
         margin-right:30px;
