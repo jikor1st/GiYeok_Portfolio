@@ -35,6 +35,9 @@ div#allWrap{
     /* overflow-x: hidden; */
     /* overflow:hidden; */
 }
+button, button:hover, button:visited, button:active, button:focus{
+    outline: none;
+}
 main{
     /* position:relative; */
     position:absolute;top:0;left:0;
@@ -47,6 +50,16 @@ section#port_wrap{
     /* width:100%; */
     position:relative;top:100vh;
     overflow-y:scroll;
+}
+section#port_wrap::-webkit-scrollbar{
+    width:6px;
+}
+section#port_wrap::-webkit-scrollbar-track{
+    background-color:#F3F3F3
+}
+section#port_wrap::-webkit-scrollbar-thumb{
+    background-color:#D9D9D9;
+    border-radius:100px;
 }
 section#port_wrap > article.port_intro{
     position: absolute;top:6vw;left:7vw;
@@ -253,10 +266,11 @@ a.pE_exitBtn > div.line:last-child{
     /* position: absolute;top:50%; */
     visibility: hidden;
 }
-.portEach_btn_con > .portEach_btn{
-    display:inline-block;
-    z-index:1500;text-decoration:none;
-    background-color:white;
+.portEach_btn_con > div {
+    position:relative;z-index:1500;
+    width:4.68vw;height:54px;cursor:pointer;
+}
+.portEach_btn_con > div > .portEach_btn{
     vertical-align: top;
     border:1px solid #DFDFDF;font-family: 'S-CoreDream-4Regular';
     font-size:1.625em;color:#DFDFDF;
@@ -267,7 +281,10 @@ a.pE_exitBtn > div.line:last-child{
     margin:0.6%;
     filter:drop-shadow(0 2px 4px #00000006);
 }
-.portEach_btn_con > .portEach_btnNot{
+.portEach_btn_con > div > .portEach_btnCan{
+    background-color:white;
+}
+.portEach_btn_con > div > .portEach_btnNot{
     background-color:#F3F3F3;
 }
 /* .portEach_btn_con > .portEach_btn:hover{
@@ -315,6 +332,15 @@ div.port_name_con > dl.port_name > dt{
     font-size:2.375em;font-weight:800;
     margin-left:-10px;margin-bottom:55px;
 }
+.port_title01{}
+.port_title02{color:rgb(73, 79, 112);}
+.port_title03{color:rgb(238, 194, 0);}
+.port_title04{}
+.port_title05{}
+.port_title06{color:rgb(7, 182, 173);}
+.port_title07{color:rgb(231, 0, 127);}
+.port_title08{color:#49CFC6;}
+
 div.port_name_con > hr{
     width:18px;border:none;border-top:3px solid black;display:inline-block;
 }
@@ -381,7 +407,7 @@ div.port_subCon > dl.port_subName > dt{
     margin-bottom:40px;color:#2E2E2E;
 }
 div.port_subCon > p.port_p{
-    width:100%;line-height:2em;
+    width:100%;line-height:1.7em;
     text-align: justify;font-size:0.938em;color:#8592A1;
 }
 .port_date{
@@ -536,14 +562,15 @@ svg.as > g.ag > .st1{
         height:fit-content;width:90vw;
         /* position: absolute;top:50%; */
     }
-    
+    .portEach_btn_con > div{
+        position: relative;
+        z-index:1500;
+        width:45px;height:45px;
+    }
     .portEach_btn_con > .portEach_btn{
         /* width:38px;height:38px;line-height:32px; */
     }
-    .portEach_btn_con > .portEach_btn{
-        display:inline-block;
-        z-index:1500;text-decoration:none;
-        vertical-align: top;
+    .portEach_btn_con > div > .portEach_btn{
         border:1px solid #DFDFDF;font-family: 'S-CoreDream-4Regular';
         font-size:1em;color:#DFDFDF;
         width:38px;height:38px;line-height:38px;text-align:center;
@@ -553,7 +580,7 @@ svg.as > g.ag > .st1{
         margin:0.45%;
         filter:drop-shadow(0 2px 4px #00000006);
     }
-    .portEach_btn_con > .portEach_btnNot{
+    .portEach_btn_con > div > .portEach_btnNot{
         background-color:#F3F3F3;
     }
     div.port_left > div.port_name_con{

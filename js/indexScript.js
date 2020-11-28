@@ -710,8 +710,11 @@ var html = document.querySelector('html');
 const nav = document.querySelector('nav');
 
 var portExBtn = document.querySelector('div.portEach_nav > a.pE_exitBtn');
+var portExBtnEls = document.querySelectorAll('a.pE_exitBtn > .line')
 var portEachBtnCon = document.querySelector('.portEach_btn_con');
-var portEachBtn = document.querySelectorAll('.portEach_btn_con > .portEach_btnCan');
+var portEachBtnDiv = document.querySelectorAll('.portEach_btn_con > div.btncan');
+var portEachBtn = document.querySelectorAll('.portEach_btn_con > div > .portEach_btnCan');
+portEachBtnDiv = Array.prototype.slice.call(portEachBtnDiv);
 portEachBtn = Array.prototype.slice.call(portEachBtn);
 
 var portBtnEls = document.querySelectorAll('.port_nav > div.port_nav_wrap > div.portBtn');
@@ -835,7 +838,21 @@ function onClickEx(e){
     },400);
     
 }
-
+function onPortEx(e){
+    e.preventDefault();
+    for(var i=0;i<portExBtnEls.length;i++){
+        portExBtnEls[i].style.transition = "transform 0.6s ease";
+    }
+    if(e.type === 'mouseenter'){
+        portExBtnEls[0].style.transform = "translate(-50%,-50%) rotateZ(135deg)";
+        portExBtnEls[1].style.transform = "translate(-50%,-50%) rotateZ(-135deg)";
+    }else if(e.type === 'mouseleave'){
+        portExBtnEls[0].style.transform = "translate(-50%,-50%) rotateZ(45deg)";
+        portExBtnEls[1].style.transform = "translate(-50%,-50%) rotateZ(-45deg)";
+    }
+}
+portExBtn.addEventListener('mouseenter', onPortEx);
+portExBtn.addEventListener('mouseleave', onPortEx);
 portExBtn.addEventListener('click', onClickEx);
 
 for(var i = 0;i < portBtnEls.length - 6;i++){
@@ -845,7 +862,7 @@ for(var i = 0;i < portBtnEls.length - 6;i++){
 function onPortEachBtn(e){
     e.preventDefault();
     var inx = e.currentTarget;
-    var EIndex = portEachBtn.indexOf(inx);
+    var EIndex = portEachBtnDiv.indexOf(inx);
     if(e.type === "click"){
         for(var i = 0; i < port.length; i++){
             port[i].style.opacity = "0";
@@ -853,8 +870,9 @@ function onPortEachBtn(e){
             portEachBtn[i].style.border = "1px solid #DFDFDF";
             portEachBtn[i].style.fontFamily = "S-CoreDream-4Regular";
             portEachBtn[i].style.color = "#DFDFDF";
-            port[i].style.transition = 'transform 0.75s ease-in 0.2s, opacity 0.55s ease-in';
+            port[i].style.transition = '0.7s ease-out';
         }
+        port[EIndex].style.transition = '1s ease';
         port[EIndex].style.visibility = "visible";
         port[EIndex].style.opacity = "1";
         portEachBtn[EIndex].style.border = "2px solid #0f78f4";
@@ -884,9 +902,9 @@ function onPortEachBtn(e){
     }
 }
 for(var i = 0;i < portEachBtn.length;i++){
-    portEachBtn[i].addEventListener('click', onPortEachBtn);
-    portEachBtn[i].addEventListener('mouseover', onPortEachBtn);
-    portEachBtn[i].addEventListener('mouseleave', onPortEachBtn);
+    portEachBtnDiv[i].addEventListener('click', onPortEachBtn);
+    portEachBtnDiv[i].addEventListener('mouseover', onPortEachBtn);
+    portEachBtnDiv[i].addEventListener('mouseleave', onPortEachBtn);
 }
 
 
