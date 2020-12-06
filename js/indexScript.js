@@ -689,10 +689,7 @@ function mainControllGStroke(){
         lineDs[0].style.transform = "translateY(" + sP + "px) scaleY(1)";
         lineDs[1].style.transform = "translateY(" + sP * -1 + "px) scaleY(1)";
     }
-    
 
-    
-    
     jgySEls[0].style.left = jgyP + "%";
     jgySEls[0].style.top = jgyTP + "%";
     jgySEls[0].style.transform = "translate(-50%, " + jgyTP * -1 + "%) scale(1)";
@@ -722,8 +719,9 @@ portBtnEls = Array.prototype.slice.call(portBtnEls);
 var svgGEls = document.querySelectorAll('.port_nav > div.port_nav_wrap > div.portBtn > svg.txtBtn > g.txtG');
 svgGEls = Array.prototype.slice.call(svgGEls);
 
+var portEachAll = document.querySelector('.port_each_all');
 var portCon = document.querySelector('section#portEach_con');
-var port = document.querySelectorAll('section#portEach_con > article.port');
+var port = document.querySelectorAll('section#portEach_con article.port');
 port = Array.prototype.slice.call(port);
 
 var port_title = document.querySelector('.port_title');
@@ -771,9 +769,6 @@ function portConReset(){
         port[i].style.visibility = "hidden";
     }
 }
-
-
-
 function onPortBtn(e){
     e.preventDefault();
     // console.log('click');
@@ -795,13 +790,15 @@ function onPortBtn(e){
                 // html.style.overflowY = "scroll";
                 // html.style.overflowX = "hidden";
             },2400);
-            portEachBtn[index].style.border = "2px solid #0f78f4";
-            portEachBtn[index].style.color = "#0f78f4";
-
+            portEachBtn[index].style.border = "2px solid #002958";
+            portEachBtn[index].style.color = "#ffffff";
+            portEachBtn[index].style.fontFamily = "S-CoreDream-7ExtraBold";
+            portEachBtn[index].style.backgroundColor = "#0F78F4";
             portEachBtnCon.style.visibility = 'visible';
+
+            portEachAll.style.transform = "translateX(" + 100 * index * -1 + "vw)";
         }
-    }
-    
+    }  
 }
 
 function onClickEx(e){
@@ -826,17 +823,24 @@ function onClickEx(e){
         }
         // html.style.overflowY = "hidden";
         // html.style.overflowX = "hidden";
-        
-    
     },110);
     for(var i = 0;i < portEachBtn.length;i++){
         portEachBtn[i].style.border = "1px solid #DFDFDF";
+        portEachBtn[i].style.fontFamily = "S-CoreDream-4Regular";
         portEachBtn[i].style.color = "#DFDFDF";
+        portEachBtn[i].style.backgroundColor = "#ffffff";
     }
     setTimeout(function(){
         portEachBtnCon.style.visibility = 'hidden';
     },400);
-    
+}
+portSetting();
+function portSetting(){
+    portEachAll.style.transform = "translate(0,0)";
+    portEachAll.style.transition = "0.5s linear";
+    for(var i = 0;i < port.length;i++){
+        port[i].style.transform = "translate(" + 100 * i + "vw, -100vh)";
+    }
 }
 function onPortEx(e){
     e.preventDefault();
@@ -870,14 +874,18 @@ function onPortEachBtn(e){
             portEachBtn[i].style.border = "1px solid #DFDFDF";
             portEachBtn[i].style.fontFamily = "S-CoreDream-4Regular";
             portEachBtn[i].style.color = "#DFDFDF";
+            portEachBtn[i].style.backgroundColor = "#ffffff";
             port[i].style.transition = '0.7s ease-out';
         }
         port[EIndex].style.transition = '1s ease';
         port[EIndex].style.visibility = "visible";
         port[EIndex].style.opacity = "1";
-        portEachBtn[EIndex].style.border = "2px solid #0f78f4";
-        portEachBtn[EIndex].style.color = "#0f78f4";
+        portEachBtn[EIndex].style.border = "2px solid #002958";
+        portEachBtn[EIndex].style.color = "#ffffff";
         portEachBtn[EIndex].style.fontFamily = "S-CoreDream-7ExtraBold";
+        portEachBtn[EIndex].style.backgroundColor = "#0F78F4";
+        console.log(EIndex);
+        portEachAll.style.transform = "translateX(" + 100 * EIndex * -1 + "vw)";
         index = EIndex;
     }
     if(e.type === "mouseover"){
@@ -885,20 +893,25 @@ function onPortEachBtn(e){
             portEachBtn[i].style.border = "1px solid #DFDFDF";
             portEachBtn[i].style.fontFamily = "S-CoreDream-4Regular";
             portEachBtn[i].style.color = "#DFDFDF";
+            portEachBtn[i].style.backgroundColor = "#ffffff";
         }
-        portEachBtn[EIndex].style.border = "2px solid #0f78f4";
-        portEachBtn[EIndex].style.color = "#0f78f4";
+        portEachBtn[EIndex].style.border = "2px solid #0F78F4";
+        portEachBtn[EIndex].style.color = "#0F78F4";
         portEachBtn[EIndex].style.fontFamily = "S-CoreDream-7ExtraBold";
+        portEachBtn[EIndex].style.backgroundColor = "#ffffff";
     }else if(e.type === "mouseleave"){
         for(var i = 0; i < port.length; i++){
             portEachBtn[i].style.border = "1px solid #DFDFDF";
             portEachBtn[i].style.fontFamily = "S-CoreDream-4Regular";
             portEachBtn[i].style.color = "#DFDFDF";
+            portEachBtn[i].style.backgroundColor = "#ffffff";
         }
-        portEachBtn[index].style.border = "2px solid #0f78f4";
-        portEachBtn[index].style.color = "#0f78f4";
+        portEachBtn[index].style.border = "2px solid #002958";
+        portEachBtn[index].style.color = "#ffffff";
         portEachBtn[index].style.fontFamily = "S-CoreDream-7ExtraBold";
-        console.log('leave : ' + index);
+        portEachBtn[index].style.backgroundColor = "#0F78F4";
+
+        // console.log('leave : ' + EIndex);
     }
 }
 for(var i = 0;i < portEachBtn.length;i++){
@@ -930,7 +943,6 @@ function onSvgBtn(e){
         }
     }
 }
-
 for(var i = 0;i < svgGEls.length - 6;i++){
     svgGEls[i].style.transition = "all 0.34s ease-in-out";
     portBtnEls[i].addEventListener('mouseenter', onSvgBtn);
