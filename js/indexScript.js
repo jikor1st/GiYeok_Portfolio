@@ -859,7 +859,7 @@ portExBtn.addEventListener('mouseenter', onPortEx);
 portExBtn.addEventListener('mouseleave', onPortEx);
 portExBtn.addEventListener('click', onClickEx);
 
-for(var i = 0;i < portBtnEls.length - 6;i++){
+for(var i = 0;i < portBtnEls.length - 5;i++){
     portBtnEls[i].style.transition = "all 1s ease-in-out 1.8s";
     portBtnEls[i].addEventListener('click', onPortBtn);
 }
@@ -926,7 +926,7 @@ function onSvgBtn(e){
     var sT = e.currentTarget;
     var index = portBtnEls.indexOf(sT);
     if(e.type === "mouseenter"){
-        for(var i = 0; i < portBtnEls.length -6;i++){
+        for(var i = 0; i < portBtnEls.length -5;i++){
             svgGEls[i].style.stroke = "#D0D9EC";
             // portBtnEls[i].classList.add('stroke');
             svgGEls[index].style.stroke = "#0F78F4";
@@ -936,67 +936,17 @@ function onSvgBtn(e){
         console.log('enter');
     }
     if(e.type === "mouseleave"){
-        for(var i =0; i < svgGEls.length -6;i++){
+        for(var i =0; i < svgGEls.length -5;i++){
             // svgGEls[i].classList.remove('stroke');
             svgGEls[i].style.stroke = "#0F78F4";
             portBtnEls[i].style.visibility = "visible";
         }
     }
 }
-for(var i = 0;i < svgGEls.length - 6;i++){
+for(var i = 0;i < svgGEls.length - 5;i++){
     svgGEls[i].style.transition = "all 0.34s ease-in-out";
     portBtnEls[i].addEventListener('mouseenter', onSvgBtn);
     portBtnEls[i].addEventListener('mouseleave', onSvgBtn);
 }
 
-/*
-var body = document.querySelector('body');
-var sclH = body.scrollTop;
-var sclFirst = true;
-function onScrollWindow(e){
-    sclH = body.scrollTop;
-    console.log(sclH);
-    if(sclH < 35 && !sclFirst){
-        port_txt.style.animation = "LoadPort 0.6s ease-in-out 1 alternate backwards";
-        port_title.style.animation = "LoadPort 0.6s ease-in-out 1 alternate backwards";
-        nav.style.animation = "LoadPort 0.6s ease-in-out 1 alternate backwards";
-    }
-    else if(sclH > 45){
-        port_txt.style.animation = "unLoadPort 0.6s ease-in-out 1 alternate forwards";
-        port_title.style.animation = "unLoadPort 0.6s ease-in-out 1 alternate forwards";
-        nav.style.animation = "unLoadPort 0.6s ease-in-out 1 alternate forwards";
-        sclFirst = false;
-    }
-}
-body.addEventListener('scroll', onScrollWindow);
-
-var as = document.querySelectorAll('svg.as');
-as = Array.prototype.slice.call(as);
-*/
-// function onMousePortImgArea(e){
-//     e.preventDefault();
-//     var tarGet = e.currentTarget;
-//     var id = portImgArea.indexOf(tarGet);
-//     portImgCover[id].style.transition = "all 0.5s ease-in-out";
-//     if(e.type === "mouseenter"){
-//         portImgCover[id].style.opacity = "0";
-//         // portImgCover[id].style.visibility = "hidden";
-//         // portImgCon[id].style.overflowY = "scroll";
-//         portImgArea[id].style.overflowY = "scroll";
-//     }
-//     else if(e.type === "mouseleave"){
-//         for(var i = 0; i < portImgCover.length;i++){
-//             portImgCover[i].style.opacity = "1";
-//             // portImgCover[i].style.visibility = "hidden";
-//             portImgArea[i].style.overflowY = "hidden";
-//             portImgArea[i].style.scrollBehavior = 'smooth';
-//             portImgArea[i].scrollTop = "0";
-//         }
-        
-//     }
-    
-// }
-// for(var i = 0; i < portImgArea.length;i++){
-//     portImgArea[i].addEventListener('mouseenter', onMousePortImgArea);
-//     portImgArea[i].addEventListener('mouseleave', onMousePortImgArea);
-// }
+// var as;
