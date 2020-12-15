@@ -491,7 +491,16 @@ svg.as > g.ag > .st1{
     div.port_left > div.port_name_con{
         margin-left:19%;margin-top:0;
     }
-    
+    .portEach_btn_con > div > .portEach_btn{
+        border:1px solid #DFDFDF;font-family: 'S-CoreDream-4Regular';
+        font-size:1em;color:#DFDFDF;
+        width:45px;height:45px;line-height:45px;text-align:center;
+        transition:border color 0.4s ease-in-out;
+        cursor:pointer;
+        border-radius:4px;
+        margin:0.45%;
+        filter:drop-shadow(0 2px 4px #00000006);
+    }
     div.port_left > div.port_subCon{
         margin-left:19%;transform:translateX(0);
         width:62.1428%;
